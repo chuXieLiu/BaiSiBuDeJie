@@ -12,6 +12,16 @@
 		F9EE42531C8D29A70034482C /* BaiSiBuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42521C8D29A70034482C /* BaiSiBuDeJieUITests.m */; };
 		F9EE42791C8D2B050034482C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42771C8D2B050034482C /* AppDelegate.m */; };
 		F9EE427A1C8D2B050034482C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42781C8D2B050034482C /* main.m */; };
+		F9EE427E1C8D2D280034482C /* BSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE427D1C8D2D280034482C /* BSTabBarController.m */; };
+		F9EE42811C8D2D4B0034482C /* BSTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42801C8D2D4B0034482C /* BSTabBar.m */; };
+		F9EE42841C8D2D660034482C /* BSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42831C8D2D660034482C /* BSNavigationController.m */; };
+		F9EE42871C8D2DBB0034482C /* BSEssenceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42861C8D2DBB0034482C /* BSEssenceViewController.m */; };
+		F9EE428A1C8D2DC80034482C /* BSNewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42891C8D2DC80034482C /* BSNewViewController.m */; };
+		F9EE428D1C8D2DE50034482C /* BSTrendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE428C1C8D2DE50034482C /* BSTrendsViewController.m */; };
+		F9EE42901C8D2DF00034482C /* BSMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE428F1C8D2DF00034482C /* BSMeViewController.m */; };
+		F9EE42941C8D397D0034482C /* BSTabBarController+BS.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42931C8D397D0034482C /* BSTabBarController+BS.m */; };
+		F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42961C8D9C900034482C /* UIView+CXFrame.m */; };
+		F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +55,26 @@
 		F9EE42771C8D2B050034482C /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		F9EE42781C8D2B050034482C /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F9EE427B1C8D2B280034482C /* BS-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BS-PrefixHeader.pch"; sourceTree = "<group>"; };
+		F9EE427C1C8D2D280034482C /* BSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTabBarController.h; sourceTree = "<group>"; };
+		F9EE427D1C8D2D280034482C /* BSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTabBarController.m; sourceTree = "<group>"; };
+		F9EE427F1C8D2D4B0034482C /* BSTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTabBar.h; sourceTree = "<group>"; };
+		F9EE42801C8D2D4B0034482C /* BSTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTabBar.m; sourceTree = "<group>"; };
+		F9EE42821C8D2D660034482C /* BSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSNavigationController.h; sourceTree = "<group>"; };
+		F9EE42831C8D2D660034482C /* BSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSNavigationController.m; sourceTree = "<group>"; };
+		F9EE42851C8D2DBB0034482C /* BSEssenceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSEssenceViewController.h; sourceTree = "<group>"; };
+		F9EE42861C8D2DBB0034482C /* BSEssenceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSEssenceViewController.m; sourceTree = "<group>"; };
+		F9EE42881C8D2DC80034482C /* BSNewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSNewViewController.h; sourceTree = "<group>"; };
+		F9EE42891C8D2DC80034482C /* BSNewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSNewViewController.m; sourceTree = "<group>"; };
+		F9EE428B1C8D2DE50034482C /* BSTrendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTrendsViewController.h; sourceTree = "<group>"; };
+		F9EE428C1C8D2DE50034482C /* BSTrendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTrendsViewController.m; sourceTree = "<group>"; };
+		F9EE428E1C8D2DF00034482C /* BSMeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMeViewController.h; sourceTree = "<group>"; };
+		F9EE428F1C8D2DF00034482C /* BSMeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMeViewController.m; sourceTree = "<group>"; };
+		F9EE42921C8D397D0034482C /* BSTabBarController+BS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BSTabBarController+BS.h"; sourceTree = "<group>"; };
+		F9EE42931C8D397D0034482C /* BSTabBarController+BS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "BSTabBarController+BS.m"; sourceTree = "<group>"; };
+		F9EE42951C8D9C900034482C /* UIView+CXFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CXFrame.h"; sourceTree = "<group>"; };
+		F9EE42961C8D9C900034482C /* UIView+CXFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CXFrame.m"; sourceTree = "<group>"; };
+		F9EE429B1C8DAB9E0034482C /* UIBarButtonItem+BS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BS.h"; sourceTree = "<group>"; };
+		F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BS.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +177,7 @@
 				F9EE42621C8D2B050034482C /* Controller */,
 				F9EE42631C8D2B050034482C /* Model */,
 				F9EE42641C8D2B050034482C /* View */,
+				F9EE42911C8D39390034482C /* Category */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -154,6 +185,10 @@
 		F9EE42621C8D2B050034482C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE427C1C8D2D280034482C /* BSTabBarController.h */,
+				F9EE427D1C8D2D280034482C /* BSTabBarController.m */,
+				F9EE42821C8D2D660034482C /* BSNavigationController.h */,
+				F9EE42831C8D2D660034482C /* BSNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -168,6 +203,8 @@
 		F9EE42641C8D2B050034482C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE427F1C8D2D4B0034482C /* BSTabBar.h */,
+				F9EE42801C8D2D4B0034482C /* BSTabBar.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -185,6 +222,8 @@
 		F9EE42661C8D2B050034482C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE42851C8D2DBB0034482C /* BSEssenceViewController.h */,
+				F9EE42861C8D2DBB0034482C /* BSEssenceViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -216,6 +255,8 @@
 		F9EE426A1C8D2B050034482C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE428B1C8D2DE50034482C /* BSTrendsViewController.h */,
+				F9EE428C1C8D2DE50034482C /* BSTrendsViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -247,6 +288,8 @@
 		F9EE426E1C8D2B050034482C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE428E1C8D2DF00034482C /* BSMeViewController.h */,
+				F9EE428F1C8D2DF00034482C /* BSMeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -278,6 +321,8 @@
 		F9EE42721C8D2B050034482C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F9EE42881C8D2DC80034482C /* BSNewViewController.h */,
+				F9EE42891C8D2DC80034482C /* BSNewViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,6 +350,19 @@
 				F9EE427B1C8D2B280034482C /* BS-PrefixHeader.pch */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		F9EE42911C8D39390034482C /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				F9EE42951C8D9C900034482C /* UIView+CXFrame.h */,
+				F9EE42961C8D9C900034482C /* UIView+CXFrame.m */,
+				F9EE42921C8D397D0034482C /* BSTabBarController+BS.h */,
+				F9EE42931C8D397D0034482C /* BSTabBarController+BS.m */,
+				F9EE429B1C8DAB9E0034482C /* UIBarButtonItem+BS.h */,
+				F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +496,16 @@
 			files = (
 				F9EE427A1C8D2B050034482C /* main.m in Sources */,
 				F9EE42791C8D2B050034482C /* AppDelegate.m in Sources */,
+				F9EE428A1C8D2DC80034482C /* BSNewViewController.m in Sources */,
+				F9EE42871C8D2DBB0034482C /* BSEssenceViewController.m in Sources */,
+				F9EE42811C8D2D4B0034482C /* BSTabBar.m in Sources */,
+				F9EE427E1C8D2D280034482C /* BSTabBarController.m in Sources */,
+				F9EE42841C8D2D660034482C /* BSNavigationController.m in Sources */,
+				F9EE42941C8D397D0034482C /* BSTabBarController+BS.m in Sources */,
+				F9EE428D1C8D2DE50034482C /* BSTrendsViewController.m in Sources */,
+				F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */,
+				F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */,
+				F9EE42901C8D2DF00034482C /* BSMeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
