@@ -1,0 +1,14 @@
+//
+//  BS-PrefixHeader.pch
+//  BaiSiBuDeJie
+//
+//  Created by c_xie on 16/3/7.
+//  Copyright © 2016年 CX. All rights reserved.
+//
+
+#ifndef BS_PrefixHeader_pch
+#define BS_PrefixHeader_pch
+
+#define BS_SCREEN_BOUNDS [UIScreen mainScreen].bounds
+
+#endif
