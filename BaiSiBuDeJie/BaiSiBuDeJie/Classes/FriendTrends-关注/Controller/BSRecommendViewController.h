@@ -10,4 +10,6 @@
 
 @interface BSRecommendViewController : UIViewController
 
++ (instancetype)recommendViewController;
+
 @end

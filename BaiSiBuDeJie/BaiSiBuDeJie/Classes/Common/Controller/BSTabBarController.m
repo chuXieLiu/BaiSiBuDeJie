@@ -39,6 +39,8 @@
     
     BSMeViewController *meVC = [BSMeViewController new];
     [self setupChildVC:meVC title:@"我" image:@"tabBar_me_icon" selectImage:@"tabBar_me_click_icon"];
+    
+    [self setSelectedIndex:2];
 }
 
 

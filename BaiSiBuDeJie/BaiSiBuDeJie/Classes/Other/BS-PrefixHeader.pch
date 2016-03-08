@@ -10,5 +10,10 @@
 #define BS_PrefixHeader_pch
 
 #import "BSMacroDefinition.h"
+#import "BSAPIClient.h"
+#import "UIView+CXFrame.h"
+#import "BSConst.h"
+#import <Masonry.h>
+#import <SVProgressHUD.h>
 
 #endif

@@ -39,7 +39,9 @@
         
         UIBarButtonItem *backItem = [UIBarButtonItem itemWithTitle:@"返回" image:@"navigationButtonReturn" selectImage:@"navigationButtonReturnClick" target:self action:@selector(popViewControllerAnimated:)];
         ((UIButton *)backItem.customView).contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+        ((UIButton *)backItem.customView).imageEdgeInsets = UIEdgeInsetsMake(0, -3, 0, 0);
         viewController.navigationItem.leftBarButtonItem = backItem;
+        viewController.hidesBottomBarWhenPushed = YES;
         
     }
     [super pushViewController:viewController animated:animated];

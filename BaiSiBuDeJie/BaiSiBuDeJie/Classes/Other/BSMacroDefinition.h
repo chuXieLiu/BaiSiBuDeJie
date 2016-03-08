@@ -17,7 +17,7 @@
 
 
 #ifdef DEBUG
-#define BSLog(fmt, ...) NSLog((@"[func = %s Line = %d]:" fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define BSLog(fmt, ...) NSLog((@"[Line = %d]:" fmt), __LINE__, ##__VA_ARGS__);
 #else
 #define BSLog(...)
 #endif

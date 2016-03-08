@@ -36,7 +36,7 @@
 
 - (void)recommendEvent:(UIBarButtonItem *)sender
 {
-    BSRecommendViewController *recommendVC = [BSRecommendViewController new];
+    BSRecommendViewController *recommendVC = [BSRecommendViewController recommendViewController];
     [self.navigationController pushViewController:recommendVC animated:YES];
 }
 
