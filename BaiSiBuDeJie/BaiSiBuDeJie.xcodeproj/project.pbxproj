@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7FAAB6CC36F58521B112CE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 910CCFE2F8AE00BE46359FF7 /* libPods.a */; };
+		F9515FE21C8E7B6100D76D6E /* BSRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */; };
 		F9EE423A1C8D29A60034482C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F9EE42391C8D29A60034482C /* Assets.xcassets */; };
 		F9EE42481C8D29A70034482C /* BaiSiBuDeJieTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42471C8D29A70034482C /* BaiSiBuDeJieTests.m */; };
 		F9EE42531C8D29A70034482C /* BaiSiBuDeJieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42521C8D29A70034482C /* BaiSiBuDeJieUITests.m */; };
@@ -42,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1CCF45D565618A957DEB9E67 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		340B1898C0A9221B66D00CAA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		910CCFE2F8AE00BE46359FF7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F907C5BE1C8E80A40044B28A /* BSMacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMacroDefinition.h; sourceTree = "<group>"; };
+		F9515FE01C8E7B6100D76D6E /* BSRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRecommendViewController.h; sourceTree = "<group>"; };
+		F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSRecommendViewController.m; sourceTree = "<group>"; };
 		F9EE422A1C8D29A60034482C /* BaiSiBuDeJie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaiSiBuDeJie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9EE42391C8D29A60034482C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F9EE423E1C8D29A60034482C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7FAAB6CC36F58521B112CE7 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +111,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45010791D8E24587DD087C12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				910CCFE2F8AE00BE46359FF7 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D93F689D543EC13EE6C15569 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				340B1898C0A9221B66D00CAA /* Pods.debug.xcconfig */,
+				1CCF45D565618A957DEB9E67 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F9EE42211C8D29A60034482C = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +135,8 @@
 				F9EE42461C8D29A70034482C /* BaiSiBuDeJieTests */,
 				F9EE42511C8D29A70034482C /* BaiSiBuDeJieUITests */,
 				F9EE422B1C8D29A60034482C /* Products */,
+				D93F689D543EC13EE6C15569 /* Pods */,
+				45010791D8E24587DD087C12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -257,6 +285,8 @@
 			children = (
 				F9EE428B1C8D2DE50034482C /* BSTrendsViewController.h */,
 				F9EE428C1C8D2DE50034482C /* BSTrendsViewController.m */,
+				F9515FE01C8E7B6100D76D6E /* BSRecommendViewController.h */,
+				F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -348,6 +378,7 @@
 				F9EE42771C8D2B050034482C /* AppDelegate.m */,
 				F9EE42781C8D2B050034482C /* main.m */,
 				F9EE427B1C8D2B280034482C /* BS-PrefixHeader.pch */,
+				F907C5BE1C8E80A40044B28A /* BSMacroDefinition.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -372,9 +403,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F9EE42571C8D29A70034482C /* Build configuration list for PBXNativeTarget "BaiSiBuDeJie" */;
 			buildPhases = (
+				94655B862DC9774EC2FB57FC /* Check Pods Manifest.lock */,
 				F9EE42261C8D29A60034482C /* Sources */,
 				F9EE42271C8D29A60034482C /* Frameworks */,
 				F9EE42281C8D29A60034482C /* Resources */,
+				90C0D2BAB060A2F9933BD369 /* Embed Pods Frameworks */,
+				3D74C05AA15D53B9D9FE8726 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -489,6 +523,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3D74C05AA15D53B9D9FE8726 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90C0D2BAB060A2F9933BD369 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94655B862DC9774EC2FB57FC /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F9EE42261C8D29A60034482C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -503,6 +585,7 @@
 				F9EE42841C8D2D660034482C /* BSNavigationController.m in Sources */,
 				F9EE42941C8D397D0034482C /* BSTabBarController+BS.m in Sources */,
 				F9EE428D1C8D2DE50034482C /* BSTrendsViewController.m in Sources */,
+				F9515FE21C8E7B6100D76D6E /* BSRecommendViewController.m in Sources */,
 				F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */,
 				F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */,
 				F9EE42901C8D2DF00034482C /* BSMeViewController.m in Sources */,
@@ -623,6 +706,7 @@
 		};
 		F9EE42581C8D29A70034482C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 340B1898C0A9221B66D00CAA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
@@ -637,6 +721,7 @@
 		};
 		F9EE42591C8D29A70034482C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1CCF45D565618A957DEB9E67 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
@@ -716,6 +801,7 @@
 				F9EE42591C8D29A70034482C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9EE425A1C8D29A70034482C /* Build configuration list for PBXNativeTarget "BaiSiBuDeJieTests" */ = {
 			isa = XCConfigurationList;
@@ -724,6 +810,7 @@
 				F9EE425C1C8D29A70034482C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9EE425D1C8D29A70034482C /* Build configuration list for PBXNativeTarget "BaiSiBuDeJieUITests" */ = {
 			isa = XCConfigurationList;
@@ -732,6 +819,7 @@
 				F9EE425F1C8D29A70034482C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

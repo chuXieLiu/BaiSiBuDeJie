@@ -8,6 +8,8 @@
 
 #import "BSTrendsViewController.h"
 #import "UIBarButtonItem+BS.h"
+#import "BSRecommendViewController.h"
+
 
 @interface BSTrendsViewController ()
 
@@ -34,7 +36,8 @@
 
 - (void)recommendEvent:(UIBarButtonItem *)sender
 {
-    BSLogFunc;
+    BSRecommendViewController *recommendVC = [BSRecommendViewController new];
+    [self.navigationController pushViewController:recommendVC animated:YES];
 }
 
 

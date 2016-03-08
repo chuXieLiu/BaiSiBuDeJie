@@ -7,6 +7,7 @@
 //
 
 #import "BSNavigationController.h"
+#import "UIBarButtonItem+BS.h"
 
 @interface BSNavigationController ()
 
@@ -29,6 +30,36 @@
     [super viewDidLoad];
     
 }
+
+
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    if (self.childViewControllers.count > 0) {
+        
+        UIBarButtonItem *backItem = [UIBarButtonItem itemWithTitle:@"返回" image:@"navigationButtonReturn" selectImage:@"navigationButtonReturnClick" target:self action:@selector(popViewControllerAnimated:)];
+        ((UIButton *)backItem.customView).contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+        viewController.navigationItem.leftBarButtonItem = backItem;
+        
+    }
+    [super pushViewController:viewController animated:animated];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @end
