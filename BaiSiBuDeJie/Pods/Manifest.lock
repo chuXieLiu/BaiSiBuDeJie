@@ -1,10 +1,13 @@
 PODS:
   - MJRefresh (3.1.0)
+  - YYModel (1.0.1)
 
 DEPENDENCIES:
   - MJRefresh (~> 3.1.0)
+  - YYModel (~> 1.0.1)
 
 SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  YYModel: 794f0820a9a9703615bc166aa8e336abaf422c2b
 
 COCOAPODS: 0.39.0
