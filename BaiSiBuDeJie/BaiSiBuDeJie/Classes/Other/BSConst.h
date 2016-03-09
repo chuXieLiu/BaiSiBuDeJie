@@ -8,3 +8,6 @@
 
 
 UIKIT_EXTERN NSString * const kBSAPIBaseURLString;
+
+
+UIKIT_EXTERN NSString * const kBSAPIResponseErrorString;

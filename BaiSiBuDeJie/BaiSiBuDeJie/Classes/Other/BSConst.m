@@ -8,3 +8,6 @@
 
 
 NSString * const kBSAPIBaseURLString = @"http://api.budejie.com/api/api_open.php";
+
+
+NSString * const kBSAPIResponseErrorString = @"网络访问错误";

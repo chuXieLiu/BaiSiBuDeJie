@@ -17,4 +17,8 @@
 @property (nonatomic,assign) NSInteger total;
 @property (nonatomic,strong) NSMutableArray *users;
 
+
+
++ (NSURLSessionTask *)loadRecommendCategoriesBlock:(void (^) (NSArray *cagegories , NSError *error))block;
+
 @end

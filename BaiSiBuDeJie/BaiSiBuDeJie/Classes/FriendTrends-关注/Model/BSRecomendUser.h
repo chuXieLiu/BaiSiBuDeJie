@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class BSRecommendCategory;
 
 @interface BSRecomendUser : NSObject
 
 @property (nonatomic,copy) NSString *header;
 @property (nonatomic,copy) NSString *name;
 @property (nonatomic,assign) NSInteger fansCount;
+
++ (NSURLSessionTask *)loadRecommendUsersWithCategory:(BSRecommendCategory *)category
+                                               Block:(void (^) (NSArray *users , NSInteger total, NSError *error))block;
+
 
 
 @end

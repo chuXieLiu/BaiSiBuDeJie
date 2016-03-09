@@ -12,6 +12,7 @@
 #import "BSMacroDefinition.h"
 #import "BSAPIClient.h"
 #import "UIView+CXFrame.h"
+#import "NSObject+BSModel.h"
 #import "BSConst.h"
 #import <Masonry.h>
 #import <SVProgressHUD.h>

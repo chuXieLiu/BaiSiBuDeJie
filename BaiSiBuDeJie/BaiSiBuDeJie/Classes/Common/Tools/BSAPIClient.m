@@ -8,7 +8,7 @@
 
 #import "BSAPIClient.h"
 
-static NSTimeInterval const BSAPIRequestTimeOut = 30.0f;
+static NSTimeInterval const BSAPIRequestTimeOut = 5.0f;
 
 @implementation BSAPIClient
 

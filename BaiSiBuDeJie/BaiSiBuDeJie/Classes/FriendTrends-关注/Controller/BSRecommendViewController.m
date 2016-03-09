@@ -9,7 +9,6 @@
 #import "BSRecommendViewController.h"
 #import "BSRecommendCategory.h"
 #import "BSRecomendUser.h"
-#import "NSObject+BSModel.h"
 #import "BSRecommendTableViewCell.h"
 #import "BSRecomendUserTableViewCell.h"
 #import <MJRefresh.h>
@@ -17,6 +16,11 @@
 static NSString * const kBSCategoryTableViewCellIdentifier = @"kBSCategoryTableViewCellIdentifier";
 
 static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellIdentifier";
+
+static CGFloat const kBSCategoryTableViewCellHeight = 44.0f;
+
+static CGFloat const kBSUserTableViewCellHeight = 66.0f;
+
 
 @interface BSRecommendViewController ()
 
@@ -27,89 +31,44 @@ static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellI
 
 @property (nonatomic,weak) IBOutlet UITableView *categoryTableView;
 @property (nonatomic,weak) IBOutlet UITableView *userTableView;
-
 @property (nonatomic,strong) NSArray *categories;
+@property (nonatomic,strong) AFHTTPSessionManager *manager;
+
 
 @end
 
 @implementation BSRecommendViewController
 
+#pragma mark - life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.userTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
-    
-    
-    self.userTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
-    self.userTableView.mj_footer.hidden = YES;
-    
-    self.categoryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-    self.userTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    [self setupRefresh];
     
     [SVProgressHUD show];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"category";
-    params[@"c"] = @"subscribe";
-    [[BSAPIClient shareManager] GET:kBSAPIBaseURLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [SVProgressHUD dismiss];
-        self.categories = [BSRecommendCategory bs_modelWithDictionaryList:responseObject[@"list"]];
-        [self.categoryTableView reloadData];
-        [self.categoryTableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
-        [self.userTableView.mj_header beginRefreshing];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    @weakify(self)
+    [BSRecommendCategory loadRecommendCategoriesBlock:^(NSArray *cagegories, NSError *error) {
+        @strongify(self)
+        if (!error) {
+            [SVProgressHUD dismiss];
+            self.categories = cagegories;
+            [self.categoryTableView reloadData];
+            [self.categoryTableView selectRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionNone];
+            [self.userTableView.mj_header beginRefreshing];
+        } else {
+            
+            [SVProgressHUD showErrorWithStatus:kBSAPIResponseErrorString];
+        }
         
     }];
-
 }
 
-- (void)loadNewUsers
+- (void)viewWillDisappear:(BOOL)animated
 {
-    BSRecommendCategory *category = [self currentSelectedCategory];
-    category.currentPage = 1;
-    NSDictionary *params = [self paramsWithCategoryId:category.id currentPage:category.currentPage];
-    [[BSAPIClient shareManager] GET:kBSAPIBaseURLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [category.users removeAllObjects];
-        [category.users addObjectsFromArray:[BSRecomendUser bs_modelWithDictionaryList:responseObject[@"list"]]];
-        category.total = [responseObject[@"total"] integerValue];
-        [self.userTableView reloadData];
-        [self.userTableView.mj_header endRefreshing];
-        [self settingFooterState];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        BSLog(@"%@",error);
-        [self.userTableView.mj_header endRefreshing];
-    }];
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
 }
-
-- (void)loadMoreUsers
-{
-    BSRecommendCategory *category = [self currentSelectedCategory];
-    category.currentPage ++;
-    NSDictionary *params = [self paramsWithCategoryId:category.id currentPage:category.currentPage];
-    [[BSAPIClient shareManager] GET:kBSAPIBaseURLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [category.users addObjectsFromArray:[BSRecomendUser bs_modelWithDictionaryList:responseObject[@"list"]]];
-        category.total = [responseObject[@"total"] integerValue];
-        if (category != [self currentSelectedCategory]) return ;
-        [self.userTableView reloadData];
-        [self.userTableView.mj_header endRefreshing];
-        [self settingFooterState];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        BSLog(@"%@",error);
-        [self.userTableView.mj_footer endRefreshing];
-    }];
-}
-
-- (void)settingFooterState
-{
-    BSRecommendCategory *category = [self currentSelectedCategory];
-    self.userTableView.mj_footer.hidden = category.total == 0;
-    if (category.users.count != category.total) {
-        [self.userTableView.mj_footer endRefreshing];
-        [self.userTableView.mj_footer resetNoMoreData];
-    } else {
-        [self.userTableView.mj_footer endRefreshingWithNoMoreData];
-    }
-}
-
 
 #pragma mark - UITableViewDataSource
 
@@ -120,12 +79,10 @@ static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellI
     } else {
         if (self.categories.count) {
             BSRecommendCategory *category = [self currentSelectedCategory];
-            [self settingFooterState];
             return category.users.count;
         }
         return 0;
     }
-    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -149,15 +106,16 @@ static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellI
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.categoryTableView) {
-        return 44.0f;
+        return kBSCategoryTableViewCellHeight;
     } else {
-        return 66.0f;
+        return kBSUserTableViewCellHeight;
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (tableView == self.categoryTableView) {
+        [self settingFooterState];
         BSRecommendCategory *category = self.categories[indexPath.row];
         if (category.users.count) {
             [self.userTableView reloadData];
@@ -168,18 +126,67 @@ static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellI
     }
 }
 
-- (NSDictionary *)paramsWithCategoryId:(NSInteger)categoryId currentPage:(NSInteger)page
+#pragma mark - private method
+
+- (void)setupRefresh
 {
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"list";
-    params[@"c"] = @"subscribe";
-    if (categoryId) {
-        params[@"category_id"] = @(categoryId);
+    self.categoryTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.userTableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    
+    self.userTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewUsers)];
+    
+    self.userTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreUsers)];
+    self.userTableView.mj_footer.hidden = YES;
+}
+
+- (void)loadNewUsers
+{
+    BSRecommendCategory *category = [self currentSelectedCategory];
+    category.currentPage = 1;
+    @weakify(self)
+    [BSRecomendUser loadRecommendUsersWithCategory:category
+                                             Block:^(NSArray *users, NSInteger total, NSError *error) {
+                                                 @strongify(self)
+                                                 if (!error) {
+                                                     [category.users removeAllObjects];
+                                                     [category.users addObjectsFromArray:users];
+                                                     category.total = total;
+                                                     [self.userTableView reloadData];
+                                                     [self settingFooterState];
+                                                 }
+                                                 [self.userTableView.mj_header endRefreshing];
+                                             }];
+}
+
+- (void)loadMoreUsers
+{
+    BSRecommendCategory *category = [self currentSelectedCategory];
+    category.currentPage ++;
+    @weakify(self)
+    [BSRecomendUser loadRecommendUsersWithCategory:category
+                                             Block:^(NSArray *users, NSInteger total, NSError *error) {
+                                                 @strongify(self)
+                                                 if (!error) {
+                                                     [category.users addObjectsFromArray:users];
+                                                     category.total = total;
+                                                     if (category != [self currentSelectedCategory]) return ;
+                                                     [self.userTableView reloadData];
+                                                     [self settingFooterState];
+                                                 }
+                                                 [self.userTableView.mj_footer endRefreshing];
+                                             }];
+}
+
+- (void)settingFooterState
+{
+    BSRecommendCategory *category = [self currentSelectedCategory];
+    self.userTableView.mj_footer.hidden = category.total == 0;
+    if (category.users.count != category.total) {
+        [self.userTableView.mj_footer endRefreshing];
+        [self.userTableView.mj_footer resetNoMoreData];
+    } else {
+        [self.userTableView.mj_footer endRefreshingWithNoMoreData];
     }
-    if (page) {
-        params[@"page"] = @(page);
-    }
-    return params.copy;
 }
 
 - (BSRecommendCategory *)currentSelectedCategory
@@ -187,6 +194,8 @@ static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellI
     return self.categories[[self.categoryTableView indexPathForSelectedRow].row];
 }
 
+
+#pragma mark - lazy
 
 - (NSArray *)categories
 {
@@ -196,17 +205,12 @@ static NSString * const kBSUSerTableViewCellIdentifier = @"kBSUSerTableViewCellI
     return _categories;
 }
 
+#pragma mark - public method
+
 + (instancetype)recommendViewController
 {
     return [UIStoryboard storyboardWithName:NSStringFromClass([self class]) bundle:nil].instantiateInitialViewController;
 }
 
-- (void)dealloc
-{
-    _categories = nil;
-    _categoryTableView = nil;
-    _userTableView = nil;
-    [[BSAPIClient shareManager].operationQueue cancelAllOperations];
-}
 
 @end

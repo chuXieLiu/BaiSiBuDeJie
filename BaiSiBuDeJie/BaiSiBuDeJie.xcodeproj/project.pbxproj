@@ -419,13 +419,13 @@
 		F9EE42751C8D2B050034482C /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				F9C280A21C8F1E90002991C6 /* BSConst.h */,
+				F9C280A31C8F1E90002991C6 /* BSConst.m */,
 				F9EE427B1C8D2B280034482C /* BS-PrefixHeader.pch */,
 				F907C5BE1C8E80A40044B28A /* BSMacroDefinition.h */,
 				F9EE42761C8D2B050034482C /* AppDelegate.h */,
 				F9EE42771C8D2B050034482C /* AppDelegate.m */,
 				F9EE42781C8D2B050034482C /* main.m */,
-				F9C280A21C8F1E90002991C6 /* BSConst.h */,
-				F9C280A31C8F1E90002991C6 /* BSConst.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";

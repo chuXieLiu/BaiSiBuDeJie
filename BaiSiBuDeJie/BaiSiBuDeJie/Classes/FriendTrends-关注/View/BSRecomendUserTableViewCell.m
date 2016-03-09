@@ -35,7 +35,7 @@
     _user = user;
     [_iconView sd_setImageWithURL:[NSURL URLWithString:_user.header] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     _nameLabel.text = _user.name;
-    _fansCountLabel.text = [NSString stringWithFormat:@"%ld人关注",_user.fansCount];
+    _fansCountLabel.text = [NSString stringWithFormat:@"%zd人关注",_user.fansCount];
 }
 
 @end
