@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A7FAAB6CC36F58521B112CE7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 910CCFE2F8AE00BE46359FF7 /* libPods.a */; };
+		F94398E91C90215F007253EB /* BSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F94398E71C90215F007253EB /* BSLoginViewController.m */; };
+		F94398EA1C90215F007253EB /* BSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94398E81C90215F007253EB /* BSLoginViewController.xib */; };
+		F94398ED1C904C31007253EB /* BSVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F94398EC1C904C31007253EB /* BSVerticalButton.m */; };
+		F94398F01C905438007253EB /* BSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F94398EF1C905438007253EB /* BSTextField.m */; };
 		F9515FE21C8E7B6100D76D6E /* BSRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */; };
 		F9620D171C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D161C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m */; };
 		F9620D1A1C8ECC3700B52A52 /* BSRecomendUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D191C8ECC3700B52A52 /* BSRecomendUser.m */; };
@@ -57,6 +61,13 @@
 		340B1898C0A9221B66D00CAA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		910CCFE2F8AE00BE46359FF7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F907C5BE1C8E80A40044B28A /* BSMacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMacroDefinition.h; sourceTree = "<group>"; };
+		F94398E61C90215F007253EB /* BSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSLoginViewController.h; sourceTree = "<group>"; };
+		F94398E71C90215F007253EB /* BSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSLoginViewController.m; sourceTree = "<group>"; };
+		F94398E81C90215F007253EB /* BSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSLoginViewController.xib; sourceTree = "<group>"; };
+		F94398EB1C904C31007253EB /* BSVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSVerticalButton.h; sourceTree = "<group>"; };
+		F94398EC1C904C31007253EB /* BSVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSVerticalButton.m; sourceTree = "<group>"; };
+		F94398EE1C905438007253EB /* BSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTextField.h; sourceTree = "<group>"; };
+		F94398EF1C905438007253EB /* BSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTextField.m; sourceTree = "<group>"; };
 		F9515FE01C8E7B6100D76D6E /* BSRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRecommendViewController.h; sourceTree = "<group>"; };
 		F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSRecommendViewController.m; sourceTree = "<group>"; };
 		F9620D151C8ECB9200B52A52 /* BSRecomendUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRecomendUserTableViewCell.h; sourceTree = "<group>"; };
@@ -154,6 +165,44 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		F94398DF1C90210E007253EB /* Login-登录 */ = {
+			isa = PBXGroup;
+			children = (
+				F94398E01C90210E007253EB /* Controller */,
+				F94398E31C90210E007253EB /* Model */,
+				F94398E41C90210E007253EB /* View */,
+			);
+			path = "Login-登录";
+			sourceTree = "<group>";
+		};
+		F94398E01C90210E007253EB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F94398E61C90215F007253EB /* BSLoginViewController.h */,
+				F94398E71C90215F007253EB /* BSLoginViewController.m */,
+				F94398E81C90215F007253EB /* BSLoginViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F94398E31C90210E007253EB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F94398E41C90210E007253EB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F94398EB1C904C31007253EB /* BSVerticalButton.h */,
+				F94398EC1C904C31007253EB /* BSVerticalButton.m */,
+				F94398EE1C905438007253EB /* BSTextField.h */,
+				F94398EF1C905438007253EB /* BSTextField.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F9E996541C8EA04D00C0A549 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +277,7 @@
 				F9EE42711C8D2B050034482C /* New-最新 */,
 				F9EE42691C8D2B050034482C /* FriendTrends-关注 */,
 				F9EE426D1C8D2B050034482C /* Me-我 */,
+				F94398DF1C90210E007253EB /* Login-登录 */,
 				F9EE42611C8D2B050034482C /* Common */,
 				F9EE42751C8D2B050034482C /* Other */,
 			);
@@ -554,6 +604,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F94398EA1C90215F007253EB /* BSLoginViewController.xib in Resources */,
 				F9EE423A1C8D29A60034482C /* Assets.xcassets in Resources */,
 				F9E9965E1C8EA8D000C0A549 /* BSRecommendViewController.storyboard in Resources */,
 			);
@@ -633,13 +684,16 @@
 				F9EE428A1C8D2DC80034482C /* BSNewViewController.m in Sources */,
 				F9620D1A1C8ECC3700B52A52 /* BSRecomendUser.m in Sources */,
 				F9EE42871C8D2DBB0034482C /* BSEssenceViewController.m in Sources */,
+				F94398E91C90215F007253EB /* BSLoginViewController.m in Sources */,
 				F9EE42811C8D2D4B0034482C /* BSTabBar.m in Sources */,
 				F9EE427E1C8D2D280034482C /* BSTabBarController.m in Sources */,
 				F9620D171C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m in Sources */,
 				F9E9965A1C8EA0D500C0A549 /* BSAPIClient.m in Sources */,
 				F9E996611C8EA97E00C0A549 /* BSRecommendTableViewCell.m in Sources */,
 				F9EE42841C8D2D660034482C /* BSNavigationController.m in Sources */,
+				F94398ED1C904C31007253EB /* BSVerticalButton.m in Sources */,
 				F9E9964A1C8E918E00C0A549 /* BSRecommendCategory.m in Sources */,
+				F94398F01C905438007253EB /* BSTextField.m in Sources */,
 				F9EE42941C8D397D0034482C /* BSTabBarController+BS.m in Sources */,
 				F9E996531C8E97E600C0A549 /* NSObject+BSModel.m in Sources */,
 				F9EE428D1C8D2DE50034482C /* BSTrendsViewController.m in Sources */,

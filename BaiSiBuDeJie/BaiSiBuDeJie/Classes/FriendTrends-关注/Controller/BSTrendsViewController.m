@@ -10,6 +10,8 @@
 #import "UIBarButtonItem+BS.h"
 #import "BSRecommendViewController.h"
 
+#import "BSLoginViewController.h"
+
 
 @interface BSTrendsViewController ()
 
@@ -28,6 +30,12 @@
 }
 
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    UIViewController *loginVC = [[BSLoginViewController alloc] init];
+    [self presentViewController:loginVC animated:YES completion:nil];
+}
 
 
 
