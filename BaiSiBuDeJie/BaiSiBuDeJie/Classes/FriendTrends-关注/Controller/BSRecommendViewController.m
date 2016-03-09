@@ -32,7 +32,6 @@ static CGFloat const kBSUserTableViewCellHeight = 66.0f;
 @property (nonatomic,weak) IBOutlet UITableView *categoryTableView;
 @property (nonatomic,weak) IBOutlet UITableView *userTableView;
 @property (nonatomic,strong) NSArray *categories;
-@property (nonatomic,strong) AFHTTPSessionManager *manager;
 
 
 @end

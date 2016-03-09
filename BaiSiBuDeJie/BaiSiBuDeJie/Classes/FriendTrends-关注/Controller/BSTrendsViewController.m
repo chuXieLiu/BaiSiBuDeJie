@@ -9,11 +9,11 @@
 #import "BSTrendsViewController.h"
 #import "UIBarButtonItem+BS.h"
 #import "BSRecommendViewController.h"
-
 #import "BSLoginViewController.h"
 
 
 @interface BSTrendsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *introLabel;
 
 @end
 
@@ -27,17 +27,22 @@
                                                                selectImage:@"friendsRecommentIcon-click"
                                                                     target:self
                                                                     action:@selector(recommendEvent:)];
+    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+    style.lineSpacing = 10.0f;
+    style.alignment = NSTextAlignmentCenter;
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc] initWithString:@"快快登录吧，关注百思最ing牛人\n好友动态让你过吧瘾儿~\n噢耶~~~~！"
+            attributes:@{
+                         NSForegroundColorAttributeName : BS_RGBAColor(143, 143, 143, 1),
+                         NSParagraphStyleAttributeName  : style
+                                                                                            }];
+    _introLabel.attributedText = string;
+    
 }
 
-
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
+- (IBAction)loginAndRegister:(UIButton *)sender {
     UIViewController *loginVC = [[BSLoginViewController alloc] init];
     [self presentViewController:loginVC animated:YES completion:nil];
 }
-
-
 
 
 #pragma mark - target event

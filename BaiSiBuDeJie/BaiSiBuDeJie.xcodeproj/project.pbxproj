@@ -16,6 +16,7 @@
 		F9620D171C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D161C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m */; };
 		F9620D1A1C8ECC3700B52A52 /* BSRecomendUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D191C8ECC3700B52A52 /* BSRecomendUser.m */; };
 		F9620D1D1C8ED95300B52A52 /* UIImage+BS.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D1C1C8ED95300B52A52 /* UIImage+BS.m */; };
+		F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F998026D1C906874005C8937 /* BSTrendsViewController.xib */; };
 		F9C280A41C8F1E90002991C6 /* BSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C280A31C8F1E90002991C6 /* BSConst.m */; };
 		F9E9964A1C8E918E00C0A549 /* BSRecommendCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E996491C8E918E00C0A549 /* BSRecommendCategory.m */; };
 		F9E996531C8E97E600C0A549 /* NSObject+BSModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E996521C8E97E600C0A549 /* NSObject+BSModel.m */; };
@@ -76,6 +77,7 @@
 		F9620D191C8ECC3700B52A52 /* BSRecomendUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSRecomendUser.m; sourceTree = "<group>"; };
 		F9620D1B1C8ED95300B52A52 /* UIImage+BS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BS.h"; sourceTree = "<group>"; };
 		F9620D1C1C8ED95300B52A52 /* UIImage+BS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BS.m"; sourceTree = "<group>"; };
+		F998026D1C906874005C8937 /* BSTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSTrendsViewController.xib; sourceTree = "<group>"; };
 		F9C280A21C8F1E90002991C6 /* BSConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSConst.h; sourceTree = "<group>"; };
 		F9C280A31C8F1E90002991C6 /* BSConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSConst.m; sourceTree = "<group>"; };
 		F9E996481C8E918E00C0A549 /* BSRecommendCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRecommendCategory.h; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 			children = (
 				F9EE428B1C8D2DE50034482C /* BSTrendsViewController.h */,
 				F9EE428C1C8D2DE50034482C /* BSTrendsViewController.m */,
+				F998026D1C906874005C8937 /* BSTrendsViewController.xib */,
 				F9515FE01C8E7B6100D76D6E /* BSRecommendViewController.h */,
 				F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */,
 				F9E9965D1C8EA8D000C0A549 /* BSRecommendViewController.storyboard */,
@@ -607,6 +610,7 @@
 				F94398EA1C90215F007253EB /* BSLoginViewController.xib in Resources */,
 				F9EE423A1C8D29A60034482C /* Assets.xcassets in Resources */,
 				F9E9965E1C8EA8D000C0A549 /* BSRecommendViewController.storyboard in Resources */,
+				F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
