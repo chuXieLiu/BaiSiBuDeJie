@@ -21,7 +21,8 @@
         for (int i = 0; i < count; i++) {
             Ivar ivar = ivars[i];
             BSLog(@"%s,%s",ivar_getName(ivar),ivar_getTypeEncoding(ivar));
-        }*/
+        }
+        free(ivars);*/
 //        _placeholderLabel
         [self setup];
     }

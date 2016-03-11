@@ -7,8 +7,14 @@
 //
 
 #import "BSTopicViewController.h"
+#import "BSTopic.h"
+#import "BSTopicTableViewCell.h"
+
+static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCellIdentifier";
 
 @interface BSTopicViewController ()
+
+@property (nonatomic,strong) NSMutableArray *topics;
 
 @end
 
@@ -16,83 +22,73 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setup];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"list";
+    params[@"c"] = @"data";
+    params[@"type"] = @(29);
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    @weakify(self)
+    [[BSAPIClient shareManager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary  *responseObject) {
+        @strongify(self)
+        [self.topics addObjectsFromArray:[BSTopic bs_modelWithDictionaryList:responseObject[@"list"]]];
+        [self.tableView reloadData];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];;
+     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-#pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
+#pragma mark - UITableViewDataSource
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+
+    return self.topics.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
-    
+    BSTopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBSTopicTableViewCellIdentifier];
+    cell.topic = _topics[indexPath.row];
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 200.0f;
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+#pragma mark - private method
+
+- (void)setup
+{
+    self.tableView.contentInset = UIEdgeInsetsMake(kBSEssenceTopicViewHeight + kBSNavigationBarHeight, 0, kBSTabBarHeight, 0);
+    self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(kBSEssenceTopicViewHeight + kBSNavigationBarHeight, 0, kBSTabBarHeight, 0);
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([BSTopicTableViewCell class])
+                        bundle:[NSBundle mainBundle]]
+         forCellReuseIdentifier:kBSTopicTableViewCellIdentifier];
+    self.view.backgroundColor = BS_RGBAColor(233, 233, 233, 1.0);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
+#pragma mark - lazy
+
+- (NSMutableArray *)topics
+{
+    if (_topics == nil) {
+        _topics = @[].mutableCopy;
+    }
+    return _topics;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class BSTopic;
+
 @interface BSTopicTableViewCell : UITableViewCell
+
+
+@property (nonatomic,strong) BSTopic *topic;
 
 @end

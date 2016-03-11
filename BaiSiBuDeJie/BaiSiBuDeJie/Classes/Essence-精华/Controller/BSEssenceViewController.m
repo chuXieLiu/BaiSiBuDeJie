@@ -7,10 +7,19 @@
 //
 
 #import "BSEssenceViewController.h"
-
-#import "UIView+CXFrame.h"
+#import "BSEssenceTopicView.h"
+#import "BSTopicViewController.h"
+#import <Masonry.h>
 
 @interface BSEssenceViewController ()
+<
+    BSEssenceTopicViewDelegate,
+    UIScrollViewDelegate
+>
+
+@property (nonatomic,weak) BSEssenceTopicView *topicView;
+
+@property (nonatomic,weak) UIScrollView *scrollView;
 
 @end
 
@@ -19,26 +28,98 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = BS_RGBAColor(223.0, 223.0, 223.0, 1.0);
+    BSTopicViewController *all = [[BSTopicViewController alloc] init];
+    all.title = @"全部";
+    [self addChildViewController:all];
+    
+    BSTopicViewController *video = [[BSTopicViewController alloc] init];
+    all.title = @"视频";
+    [self addChildViewController:video];
+    
+    BSTopicViewController *picture = [[BSTopicViewController alloc] init];
+    all.title = @"图片";
+    [self addChildViewController:picture];
+    
+    BSTopicViewController *word = [[BSTopicViewController alloc] init];
+    all.title = @"段子";
+    [self addChildViewController:word];
+    
+    BSTopicViewController *voice = [[BSTopicViewController alloc] init];
+    all.title = @"声音";
+    [self addChildViewController:voice];
+    
+    [self setupNavBar];
+    [self setupScrollView];
+    [self setupTopicView];
+}
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSInteger index = scrollView.contentOffset.x / scrollView.width;
+    [self.topicView setSelectTopic:index animated:YES];
+    UIViewController *VC = self.childViewControllers[index];
+    [_scrollView addSubview:VC.view];
+    VC.view.left = scrollView.width * index;
+    VC.view.top = 0;
+    VC.view.size = self.view.size;
+    
+}
+
+#pragma mark - BSEssenceTopicViewDelegate
+
+- (void)essenceTopicView:(UIView *)topicView didSelectedIndex:(NSInteger)index
+{
+    CGPoint offset = _scrollView.contentOffset;
+    offset.x = index * _scrollView.width;
+    _scrollView.contentOffset = offset;
+    [self scrollViewDidEndDecelerating:_scrollView];
+}
+
+#pragma mark - private method
+
+- (void)setupNavBar
+{
+    self.view.backgroundColor = BS_RGBAColor(223.0, 223.0, 223.0, 1.0);
+    
     self.navigationItem.titleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MainTitle"]];
     
-
+    self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupTopicView
+{
+    BSEssenceTopicView *topicView = [[BSEssenceTopicView alloc] initWithTopics:@[
+                                                                                 @"全部",
+                                                                                 @"视频",
+                                                                                 @"图片",
+                                                                                 @"段子",
+                                                                                 @"声音"
+                                                                                 ]
+                                                                      delegate:self];
+    [topicView setSelectTopic:0 animated:YES];
+    topicView.backgroundColor = BS_RGBAColor(248, 248, 248, 0.7);
+    [self.view addSubview:topicView];
+    _topicView = topicView;
+    [topicView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.mas_topLayoutGuide);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@(kBSEssenceTopicViewHeight));
+    }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setupScrollView
+{
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:scrollView];
+    scrollView.pagingEnabled = YES;
+    _scrollView = scrollView;
+    _scrollView.delegate = self;
+    _scrollView.backgroundColor = [UIColor redColor];
+    _scrollView.contentSize = CGSizeMake(5 * self.view.width, 0);
+    [self scrollViewDidEndDecelerating:_scrollView];
 }
-*/
+
 
 @end

@@ -11,3 +11,12 @@ UIKIT_EXTERN NSString * const kBSAPIBaseURLString;
 
 
 UIKIT_EXTERN NSString * const kBSAPIResponseErrorString;
+
+
+UIKIT_EXTERN CGFloat const kBSEssenceTopicViewHeight;
+
+UIKIT_EXTERN CGFloat const kBSTabBarHeight;
+
+UIKIT_EXTERN CGFloat const kBSNavigationBarHeight;
+
+UIKIT_EXTERN CGFloat const kBSTopicCellMargin;

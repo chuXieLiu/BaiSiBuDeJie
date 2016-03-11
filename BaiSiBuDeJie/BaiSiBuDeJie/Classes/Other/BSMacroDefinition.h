@@ -10,6 +10,9 @@
 #define BS_Macro_Definition
 
 #define BS_SCREEN_BOUNDS [UIScreen mainScreen].bounds
+#define BS_SCREEN_SIZE   [UIScreen mainScreen].bounds.size
+#define BS_SCREEN_WIDTH  [UIScreen mainScreen].bounds.size.width
+#define BS_SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 #define BS_RGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 

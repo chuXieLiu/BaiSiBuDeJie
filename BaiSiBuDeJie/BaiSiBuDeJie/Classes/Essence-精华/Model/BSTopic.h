@@ -10,4 +10,24 @@
 
 @interface BSTopic : NSObject
 
+@property (nonatomic,copy) NSString *profileImage;
+
+@property (nonatomic,copy) NSString *screenName;
+
+@property (nonatomic,copy) NSString *createTime;
+
+@property (nonatomic,copy) NSString *text;
+
+@property (nonatomic,assign) NSInteger ding;    // 顶
+
+@property (nonatomic,assign) NSInteger cai;     // 踩
+
+@property (nonatomic,assign) NSInteger comment; // 评论
+
+@property (nonatomic,assign) NSInteger repost;  // 转发
+
+
+
+
+
 @end

@@ -10,4 +10,16 @@
 
 @interface CALayer (CXExtension)
 
+@property (nonatomic,assign) CGFloat transformRotation;  ///< key path "tranform.rotation"
+@property (nonatomic,assign) CGFloat transformRotationX;
+@property (nonatomic,assign) CGFloat transformRotationY;
+@property (nonatomic,assign) CGFloat transformRotationZ;
+@property (nonatomic,assign) CGFloat transformScale;
+@property (nonatomic,assign) CGFloat transformScaleX;
+@property (nonatomic,assign) CGFloat transformScaleY;
+@property (nonatomic,assign) CGFloat transformScaleZ;
+@property (nonatomic,assign) CGFloat transformTranslationX;
+@property (nonatomic,assign) CGFloat transformTranslationY;
+@property (nonatomic,assign) CGFloat transformTranslationZ;
+
 @end

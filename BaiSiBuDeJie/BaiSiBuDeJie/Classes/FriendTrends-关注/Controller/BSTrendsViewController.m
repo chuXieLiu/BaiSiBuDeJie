@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.view.backgroundColor = BS_RGBAColor(233, 233, 233, 1.0);
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTitle:nil
                                                                      image:@"friendsRecommentIcon"

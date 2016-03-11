@@ -8,6 +8,20 @@
 
 #import "BSTopic.h"
 
+@interface BSTopic () <YYModel>
+
+@end
+
 @implementation BSTopic
+
++ (NSDictionary<NSString *,id> *)modelCustomPropertyMapper
+{
+    return @{
+             @"profileImage" : @"profile_image",
+             @"screenName" : @"screen_name",
+             @"createTime" : @"create_time",
+             @"" : @"",
+             };
+}
 
 @end

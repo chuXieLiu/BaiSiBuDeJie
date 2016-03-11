@@ -141,20 +141,25 @@ static CGFloat const kBSUserTableViewCellHeight = 66.0f;
 - (void)loadNewUsers
 {
     BSRecommendCategory *category = [self currentSelectedCategory];
+    NSInteger page = category.currentPage;
     category.currentPage = 1;
     @weakify(self)
     [BSRecomendUser loadRecommendUsersWithCategory:category
-                                             Block:^(NSArray *users, NSInteger total, NSError *error) {
-                                                 @strongify(self)
-                                                 if (!error) {
-                                                     [category.users removeAllObjects];
-                                                     [category.users addObjectsFromArray:users];
-                                                     category.total = total;
-                                                     [self.userTableView reloadData];
-                                                     [self settingFooterState];
-                                                 }
-                                                 [self.userTableView.mj_header endRefreshing];
-                                             }];
+     Block:^(NSArray *users, NSInteger total, NSError *error) {
+         @strongify(self)
+         if (!error) {
+             [category.users removeAllObjects];
+             [category.users addObjectsFromArray:users];
+             category.total = total;
+             if (category != [self currentSelectedCategory]) return ;
+             [self.userTableView reloadData];
+             [self settingFooterState];
+         } else {
+             // 访问失败页码回滚
+             category.currentPage = page;
+         }
+         [self.userTableView.mj_header endRefreshing];
+     }];
 }
 
 - (void)loadMoreUsers
@@ -163,17 +168,19 @@ static CGFloat const kBSUserTableViewCellHeight = 66.0f;
     category.currentPage ++;
     @weakify(self)
     [BSRecomendUser loadRecommendUsersWithCategory:category
-                                             Block:^(NSArray *users, NSInteger total, NSError *error) {
-                                                 @strongify(self)
-                                                 if (!error) {
-                                                     [category.users addObjectsFromArray:users];
-                                                     category.total = total;
-                                                     if (category != [self currentSelectedCategory]) return ;
-                                                     [self.userTableView reloadData];
-                                                     [self settingFooterState];
-                                                 }
-                                                 [self.userTableView.mj_footer endRefreshing];
-                                             }];
+     Block:^(NSArray *users, NSInteger total, NSError *error) {
+         @strongify(self)
+         if (!error) {
+             [category.users addObjectsFromArray:users];
+             category.total = total;
+             if (category != [self currentSelectedCategory]) return ;
+             [self.userTableView reloadData];
+             [self settingFooterState];
+         } else {
+             category.currentPage --;
+         }
+         [self.userTableView.mj_footer endRefreshing];
+     }];
 }
 
 - (void)settingFooterState

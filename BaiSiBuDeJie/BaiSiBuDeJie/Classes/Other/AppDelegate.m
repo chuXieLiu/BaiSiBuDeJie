@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "BSTabBarController.h"
+#import <SDImageCache.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,10 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
+    NSString *bundledPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"CustomPathImages"];
+    [[SDImageCache sharedImageCache] addReadOnlyCachePath:bundledPath];
     
     NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 diskCapacity:20 * 1024 * 1024 diskPath:nil];
     [NSURLCache setSharedURLCache:URLCache];
