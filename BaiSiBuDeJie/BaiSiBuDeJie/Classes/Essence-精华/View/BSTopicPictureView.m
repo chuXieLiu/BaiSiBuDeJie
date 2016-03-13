@@ -10,6 +10,7 @@
 #import "BSTopic.h"
 #import <UIImageView+WebCache.h>
 #import "BSCircularProgressView.h"
+#import "BSPictureViewController.h"
 
 
 @interface BSTopicPictureView ()
@@ -29,6 +30,8 @@
 - (void)awakeFromNib
 {
     self.autoresizingMask = UIViewAutoresizingNone;
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewDidTap:)];
+    [_bigImageView addGestureRecognizer:tapGesture];
 }
 
 + (instancetype)topicPictureView
@@ -50,7 +53,12 @@
     } else {
         _seeBigPictureButton.hidden = YES;
     }
-    [_progressView setProgress:_topic.progress animated:NO];
+    if ( _topic.progress <= 1.0f) {
+        _progressView.hidden = NO;
+        [_progressView setProgress:_topic.progress animated:NO];
+    } else {
+        _progressView.hidden = YES;
+    }
     [_bigImageView sd_setImageWithURL:[NSURL URLWithString:_topic.largeImage]
                      placeholderImage:nil
                               options:SDWebImageRetryFailed
@@ -72,9 +80,14 @@
 
 }
 
-
-- (IBAction)seeBigImageEvent:(UIButton *)sender {
-    
+- (void)imageViewDidTap:(UITapGestureRecognizer *)sender
+{
+    BSPictureViewController *pictureVC = [[BSPictureViewController alloc] init];
+    pictureVC.topic = _topic;
+    pictureVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:pictureVC animated:YES completion:nil];
 }
+
+
 
 @end

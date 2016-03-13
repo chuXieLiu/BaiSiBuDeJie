@@ -49,6 +49,8 @@
 		F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42961C8D9C900034482C /* UIView+CXFrame.m */; };
 		F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */; };
 		F9F1FE2C1C952B5F00438DBC /* BSCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F1FE2B1C952B5F00438DBC /* BSCircularProgressView.m */; };
+		F9F1FE331C957A4300438DBC /* BSPictureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F1FE311C957A4300438DBC /* BSPictureViewController.m */; };
+		F9F1FE341C957A4300438DBC /* BSPictureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9F1FE321C957A4300438DBC /* BSPictureViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -153,6 +155,9 @@
 		F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BS.m"; sourceTree = "<group>"; };
 		F9F1FE2A1C952B5F00438DBC /* BSCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCircularProgressView.h; sourceTree = "<group>"; };
 		F9F1FE2B1C952B5F00438DBC /* BSCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCircularProgressView.m; sourceTree = "<group>"; };
+		F9F1FE301C957A4300438DBC /* BSPictureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPictureViewController.h; sourceTree = "<group>"; };
+		F9F1FE311C957A4300438DBC /* BSPictureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPictureViewController.m; sourceTree = "<group>"; };
+		F9F1FE321C957A4300438DBC /* BSPictureViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSPictureViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +380,9 @@
 				F9EE42861C8D2DBB0034482C /* BSEssenceViewController.m */,
 				F98810E41C92C4210008FF7E /* BSTopicViewController.h */,
 				F98810E51C92C4210008FF7E /* BSTopicViewController.m */,
+				F9F1FE301C957A4300438DBC /* BSPictureViewController.h */,
+				F9F1FE311C957A4300438DBC /* BSPictureViewController.m */,
+				F9F1FE321C957A4300438DBC /* BSPictureViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -661,6 +669,7 @@
 				F94398EA1C90215F007253EB /* BSLoginViewController.xib in Resources */,
 				F9EE423A1C8D29A60034482C /* Assets.xcassets in Resources */,
 				F98810EE1C9312080008FF7E /* BSTopicTableViewCell.xib in Resources */,
+				F9F1FE341C957A4300438DBC /* BSPictureViewController.xib in Resources */,
 				F9E9965E1C8EA8D000C0A549 /* BSRecommendViewController.storyboard in Resources */,
 				F98810FF1C943B9F0008FF7E /* BSTopicPictureView.xib in Resources */,
 				F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */,
@@ -766,6 +775,7 @@
 				F98810FD1C943B940008FF7E /* BSTopicPictureView.m in Sources */,
 				F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */,
 				F98810E91C930F180008FF7E /* BSTopic.m in Sources */,
+				F9F1FE331C957A4300438DBC /* BSPictureViewController.m in Sources */,
 				F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */,
 				F9C280A41C8F1E90002991C6 /* BSConst.m in Sources */,
 				F9EE42901C8D2DF00034482C /* BSMeViewController.m in Sources */,
