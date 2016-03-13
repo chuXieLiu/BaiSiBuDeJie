@@ -8,6 +8,9 @@
 
 #import <XCTest/XCTest.h>
 
+#import "BSHelper.h"
+#import "NSDate+BSExtension.h"
+
 @interface BaiSiBuDeJieTests : XCTestCase
 
 @end
@@ -27,6 +30,9 @@
 - (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
+    NSDate *date = [[BSHelper dateFormatter] dateFromString:@"2016-03-11 17:28:21"];
+    
+    XCTAssertTrue([date isToday],"-------------------");
 }
 
 - (void)testPerformanceExample {

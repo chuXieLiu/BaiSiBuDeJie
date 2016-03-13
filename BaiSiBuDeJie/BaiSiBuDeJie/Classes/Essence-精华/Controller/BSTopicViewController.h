@@ -10,4 +10,6 @@
 
 @interface BSTopicViewController : UITableViewController
 
+@property (nonatomic,assign) BSEssenceTopicType type;
+
 @end

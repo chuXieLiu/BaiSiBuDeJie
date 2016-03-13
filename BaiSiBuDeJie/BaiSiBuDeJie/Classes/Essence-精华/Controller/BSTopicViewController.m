@@ -10,6 +10,7 @@
 #import "BSTopic.h"
 #import "BSTopicTableViewCell.h"
 
+
 static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCellIdentifier";
 
 @interface BSTopicViewController ()
@@ -26,7 +27,7 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"a"] = @"list";
     params[@"c"] = @"data";
-    params[@"type"] = @(29);
+    params[@"type"] = @(_type);
     
     @weakify(self)
     [[BSAPIClient shareManager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary  *responseObject) {
@@ -54,7 +55,7 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     BSTopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBSTopicTableViewCellIdentifier];
-    cell.topic = _topics[indexPath.row];
+//    [[SDImageCache sharedImageCache] setValue:nil forKey:@"memCache"];
     return cell;
 }
 
@@ -62,7 +63,15 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 200.0f;
+    BSTopic *topic = _topics[indexPath.row];
+    return topic.cellHeight;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell isKindOfClass:[BSTopicTableViewCell class]]) {
+        ((BSTopicTableViewCell *)cell).topic = _topics[indexPath.row];
+    }
 }
 
 

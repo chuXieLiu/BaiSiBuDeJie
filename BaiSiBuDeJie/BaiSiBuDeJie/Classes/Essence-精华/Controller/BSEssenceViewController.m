@@ -28,28 +28,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    BSTopicViewController *all = [[BSTopicViewController alloc] init];
-    all.title = @"全部";
-    [self addChildViewController:all];
-    
-    BSTopicViewController *video = [[BSTopicViewController alloc] init];
-    all.title = @"视频";
-    [self addChildViewController:video];
-    
-    BSTopicViewController *picture = [[BSTopicViewController alloc] init];
-    all.title = @"图片";
-    [self addChildViewController:picture];
-    
-    BSTopicViewController *word = [[BSTopicViewController alloc] init];
-    all.title = @"段子";
-    [self addChildViewController:word];
-    
-    BSTopicViewController *voice = [[BSTopicViewController alloc] init];
-    all.title = @"声音";
-    [self addChildViewController:voice];
+    [self setupChildVC];
     
     [self setupNavBar];
+    
     [self setupScrollView];
+    
     [self setupTopicView];
 }
 
@@ -60,11 +44,12 @@
     NSInteger index = scrollView.contentOffset.x / scrollView.width;
     [self.topicView setSelectTopic:index animated:YES];
     UIViewController *VC = self.childViewControllers[index];
-    [_scrollView addSubview:VC.view];
-    VC.view.left = scrollView.width * index;
-    VC.view.top = 0;
-    VC.view.size = self.view.size;
-    
+    if (![_scrollView.subviews containsObject:VC.view]) {
+        [_scrollView addSubview:VC.view];
+        VC.view.left = scrollView.width * index;
+        VC.view.top = 0;
+        VC.view.size = self.view.size;
+    }
 }
 
 #pragma mark - BSEssenceTopicViewDelegate
@@ -78,6 +63,34 @@
 }
 
 #pragma mark - private method
+
+- (void)setupChildVC
+{
+    BSTopicViewController *all = [[BSTopicViewController alloc] init];
+    all.title = @"全部";
+    all.type = BSEssenceTopicTypeAll;
+    [self addChildViewController:all];
+    
+    BSTopicViewController *video = [[BSTopicViewController alloc] init];
+    video.title = @"视频";
+    video.type = BSEssenceTopicTypeVideo;
+    [self addChildViewController:video];
+    
+    BSTopicViewController *picture = [[BSTopicViewController alloc] init];
+    picture.type = BSEssenceTopicTypePicture;
+    picture.title = @"图片";
+    [self addChildViewController:picture];
+    
+    BSTopicViewController *word = [[BSTopicViewController alloc] init];
+    word.type = BSEssenceTopicTypeWord;
+    word.title = @"段子";
+    [self addChildViewController:word];
+    
+    BSTopicViewController *voice = [[BSTopicViewController alloc] init];
+    voice.type = BSEssenceTopicTypeVoice;
+    voice.title = @"声音";
+    [self addChildViewController:voice];
+}
 
 - (void)setupNavBar
 {
@@ -116,7 +129,7 @@
     scrollView.pagingEnabled = YES;
     _scrollView = scrollView;
     _scrollView.delegate = self;
-    _scrollView.backgroundColor = [UIColor redColor];
+    _scrollView.backgroundColor = BS_RGBAColor(233, 233, 233, 1.0);
     _scrollView.contentSize = CGSizeMake(5 * self.view.width, 0);
     [self scrollViewDidEndDecelerating:_scrollView];
 }

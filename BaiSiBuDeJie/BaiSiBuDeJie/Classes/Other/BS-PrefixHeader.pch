@@ -14,6 +14,7 @@
 #import "UIView+CXFrame.h"
 #import "NSObject+BSModel.h"
 #import "BSConst.h"
+#import "BSHelper.h"
 #import <Masonry.h>
 #import <SVProgressHUD.h>
 

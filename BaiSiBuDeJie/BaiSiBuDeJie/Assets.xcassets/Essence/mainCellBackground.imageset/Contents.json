@@ -1,11 +1,39 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 3,
+          "height" : 5
+        },
+        "cap-insets" : {
+          "bottom" : 21,
+          "top" : 24,
+          "right" : 25,
+          "left" : 22
+        }
+      },
       "idiom" : "universal",
       "filename" : "mainCellBackground.png",
       "scale" : "1x"
     },
     {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 41,
+          "top" : 50,
+          "right" : 49,
+          "left" : 42
+        }
+      },
       "idiom" : "universal",
       "filename" : "mainCellBackground@2x.png",
       "scale" : "2x"

@@ -22,6 +22,10 @@
 		F98810E91C930F180008FF7E /* BSTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810E81C930F180008FF7E /* BSTopic.m */; };
 		F98810ED1C9312080008FF7E /* BSTopicTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810EB1C9312080008FF7E /* BSTopicTableViewCell.m */; };
 		F98810EE1C9312080008FF7E /* BSTopicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98810EC1C9312080008FF7E /* BSTopicTableViewCell.xib */; };
+		F98810F11C93AF110008FF7E /* BSHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810F01C93AF110008FF7E /* BSHelper.m */; };
+		F98810FA1C93B3B20008FF7E /* NSDate+BSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810F91C93B3B20008FF7E /* NSDate+BSExtension.m */; };
+		F98810FD1C943B940008FF7E /* BSTopicPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810FC1C943B940008FF7E /* BSTopicPictureView.m */; };
+		F98810FF1C943B9F0008FF7E /* BSTopicPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98810FE1C943B9F0008FF7E /* BSTopicPictureView.xib */; };
 		F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F998026D1C906874005C8937 /* BSTrendsViewController.xib */; };
 		F9C280A41C8F1E90002991C6 /* BSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C280A31C8F1E90002991C6 /* BSConst.m */; };
 		F9E9964A1C8E918E00C0A549 /* BSRecommendCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E996491C8E918E00C0A549 /* BSRecommendCategory.m */; };
@@ -44,6 +48,7 @@
 		F9EE42941C8D397D0034482C /* BSTabBarController+BS.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42931C8D397D0034482C /* BSTabBarController+BS.m */; };
 		F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE42961C8D9C900034482C /* UIView+CXFrame.m */; };
 		F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */; };
+		F9F1FE2C1C952B5F00438DBC /* BSCircularProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9F1FE2B1C952B5F00438DBC /* BSCircularProgressView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +99,13 @@
 		F98810EA1C9312080008FF7E /* BSTopicTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTopicTableViewCell.h; sourceTree = "<group>"; };
 		F98810EB1C9312080008FF7E /* BSTopicTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTopicTableViewCell.m; sourceTree = "<group>"; };
 		F98810EC1C9312080008FF7E /* BSTopicTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSTopicTableViewCell.xib; sourceTree = "<group>"; };
+		F98810EF1C93AF110008FF7E /* BSHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSHelper.h; sourceTree = "<group>"; };
+		F98810F01C93AF110008FF7E /* BSHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSHelper.m; sourceTree = "<group>"; };
+		F98810F81C93B3B20008FF7E /* NSDate+BSExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+BSExtension.h"; sourceTree = "<group>"; };
+		F98810F91C93B3B20008FF7E /* NSDate+BSExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+BSExtension.m"; sourceTree = "<group>"; };
+		F98810FB1C943B940008FF7E /* BSTopicPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTopicPictureView.h; sourceTree = "<group>"; };
+		F98810FC1C943B940008FF7E /* BSTopicPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTopicPictureView.m; sourceTree = "<group>"; };
+		F98810FE1C943B9F0008FF7E /* BSTopicPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSTopicPictureView.xib; sourceTree = "<group>"; };
 		F998026D1C906874005C8937 /* BSTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSTrendsViewController.xib; sourceTree = "<group>"; };
 		F9C280A21C8F1E90002991C6 /* BSConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSConst.h; sourceTree = "<group>"; };
 		F9C280A31C8F1E90002991C6 /* BSConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSConst.m; sourceTree = "<group>"; };
@@ -139,6 +151,8 @@
 		F9EE42961C8D9C900034482C /* UIView+CXFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CXFrame.m"; sourceTree = "<group>"; };
 		F9EE429B1C8DAB9E0034482C /* UIBarButtonItem+BS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+BS.h"; sourceTree = "<group>"; };
 		F9EE429C1C8DAB9E0034482C /* UIBarButtonItem+BS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+BS.m"; sourceTree = "<group>"; };
+		F9F1FE2A1C952B5F00438DBC /* BSCircularProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCircularProgressView.h; sourceTree = "<group>"; };
+		F9F1FE2B1C952B5F00438DBC /* BSCircularProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCircularProgressView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +241,8 @@
 			children = (
 				F9E996581C8EA0D500C0A549 /* BSAPIClient.h */,
 				F9E996591C8EA0D500C0A549 /* BSAPIClient.m */,
+				F98810EF1C93AF110008FF7E /* BSHelper.h */,
+				F98810F01C93AF110008FF7E /* BSHelper.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -380,6 +396,11 @@
 				F98810EA1C9312080008FF7E /* BSTopicTableViewCell.h */,
 				F98810EB1C9312080008FF7E /* BSTopicTableViewCell.m */,
 				F98810EC1C9312080008FF7E /* BSTopicTableViewCell.xib */,
+				F98810FB1C943B940008FF7E /* BSTopicPictureView.h */,
+				F98810FC1C943B940008FF7E /* BSTopicPictureView.m */,
+				F98810FE1C943B9F0008FF7E /* BSTopicPictureView.xib */,
+				F9F1FE2A1C952B5F00438DBC /* BSCircularProgressView.h */,
+				F9F1FE2B1C952B5F00438DBC /* BSCircularProgressView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -524,6 +545,8 @@
 				F9620D1C1C8ED95300B52A52 /* UIImage+BS.m */,
 				F98810E11C92BF350008FF7E /* CALayer+CXExtension.h */,
 				F98810E21C92BF350008FF7E /* CALayer+CXExtension.m */,
+				F98810F81C93B3B20008FF7E /* NSDate+BSExtension.h */,
+				F98810F91C93B3B20008FF7E /* NSDate+BSExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -639,6 +662,7 @@
 				F9EE423A1C8D29A60034482C /* Assets.xcassets in Resources */,
 				F98810EE1C9312080008FF7E /* BSTopicTableViewCell.xib in Resources */,
 				F9E9965E1C8EA8D000C0A549 /* BSRecommendViewController.storyboard in Resources */,
+				F98810FF1C943B9F0008FF7E /* BSTopicPictureView.xib in Resources */,
 				F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -722,20 +746,24 @@
 				F98810E01C923AD20008FF7E /* BSEssenceTopicView.m in Sources */,
 				F9EE42811C8D2D4B0034482C /* BSTabBar.m in Sources */,
 				F9EE427E1C8D2D280034482C /* BSTabBarController.m in Sources */,
+				F98810FA1C93B3B20008FF7E /* NSDate+BSExtension.m in Sources */,
 				F9620D171C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m in Sources */,
 				F98810E31C92BF350008FF7E /* CALayer+CXExtension.m in Sources */,
 				F9E9965A1C8EA0D500C0A549 /* BSAPIClient.m in Sources */,
 				F98810ED1C9312080008FF7E /* BSTopicTableViewCell.m in Sources */,
+				F98810F11C93AF110008FF7E /* BSHelper.m in Sources */,
 				F9E996611C8EA97E00C0A549 /* BSRecommendTableViewCell.m in Sources */,
 				F9EE42841C8D2D660034482C /* BSNavigationController.m in Sources */,
 				F94398ED1C904C31007253EB /* BSVerticalButton.m in Sources */,
 				F9E9964A1C8E918E00C0A549 /* BSRecommendCategory.m in Sources */,
 				F94398F01C905438007253EB /* BSTextField.m in Sources */,
 				F9EE42941C8D397D0034482C /* BSTabBarController+BS.m in Sources */,
+				F9F1FE2C1C952B5F00438DBC /* BSCircularProgressView.m in Sources */,
 				F9E996531C8E97E600C0A549 /* NSObject+BSModel.m in Sources */,
 				F9EE428D1C8D2DE50034482C /* BSTrendsViewController.m in Sources */,
 				F9515FE21C8E7B6100D76D6E /* BSRecommendViewController.m in Sources */,
 				F9620D1D1C8ED95300B52A52 /* UIImage+BS.m in Sources */,
+				F98810FD1C943B940008FF7E /* BSTopicPictureView.m in Sources */,
 				F9EE42971C8D9C900034482C /* UIView+CXFrame.m in Sources */,
 				F98810E91C930F180008FF7E /* BSTopic.m in Sources */,
 				F9EE429D1C8DAB9E0034482C /* UIBarButtonItem+BS.m in Sources */,

@@ -12,7 +12,6 @@
 
 - (void)setLeft:(CGFloat)left
 {
-//    BSLog(@"%@",self);
     CGRect frame = self.frame;
     frame.origin.x = left;
     self.frame = frame;
