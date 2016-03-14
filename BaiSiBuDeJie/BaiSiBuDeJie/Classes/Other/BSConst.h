@@ -16,10 +16,25 @@ typedef enum : NSUInteger {
 } BSEssenceTopicType;
 
 
+// networking
+
 UIKIT_EXTERN NSString * const kBSAPIBaseURLString;
 
-
 UIKIT_EXTERN NSString * const kBSAPIResponseErrorString;
+
+UIKIT_EXTERN NSString * const kBSAPIParamsKeyA;
+
+UIKIT_EXTERN NSString * const kBSAPIParamsKeyC;
+
+UIKIT_EXTERN NSString * const kBSAPIResponseKeyInfo;
+
+UIKIT_EXTERN NSString * const kBSAPIResponseKeyList;
+
+UIKIT_EXTERN NSString * const kBSAPIResponsekeyTotal;
+
+
+
+
 
 
 // topic

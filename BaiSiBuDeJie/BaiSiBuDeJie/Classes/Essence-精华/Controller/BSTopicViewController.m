@@ -9,6 +9,7 @@
 #import "BSTopicViewController.h"
 #import "BSTopic.h"
 #import "BSTopicTableViewCell.h"
+#import <MJRefresh.h>
 
 
 static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCellIdentifier";
@@ -17,6 +18,15 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 
 @property (nonatomic,strong) NSMutableArray *topics;
 
+@property (nonatomic,assign) NSInteger page;    // 页码
+
+@property (nonatomic,copy) NSString *maxtime;   // 最大帖子数
+
+@property (nonatomic,assign) BOOL isLoadNewTopics;
+
+//@property (nonatomic,strong) NSURLSessionTask *task;
+
+
 @end
 
 @implementation BSTopicViewController
@@ -24,21 +34,7 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setup];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"a"] = @"list";
-    params[@"c"] = @"data";
-    params[@"type"] = @(_type);
-    
-    @weakify(self)
-    [[BSAPIClient shareManager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, NSDictionary  *responseObject) {
-        @strongify(self)
-        [self.topics addObjectsFromArray:[BSTopic bs_modelWithDictionaryList:responseObject[@"list"]]];
-        [self.tableView reloadData];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-    }];;
-     
+    [self setupRefresh];
 }
 
 
@@ -55,7 +51,6 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     BSTopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBSTopicTableViewCellIdentifier];
-//    [[SDImageCache sharedImageCache] setValue:nil forKey:@"memCache"];
     return cell;
 }
 
@@ -74,6 +69,49 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
     }
 }
 
+#pragma mark - target event
+
+- (void)loadMoreNewTopics
+{
+    self.isLoadNewTopics = YES;
+//    if (_task.state == NSURLSessionTaskStateRunning) [_task cancel];
+    @weakify(self)
+    [BSTopic loadNewTopicsWithType:_type Block:^(NSArray *topics, NSString *maxTime, NSError *error) {
+        if (!self.isLoadNewTopics) return ;
+        if (!error) {
+            @strongify(self)
+            [self.topics removeAllObjects];
+            [self.topics addObjectsFromArray:topics];
+            self.maxtime = maxTime;
+            [self.tableView reloadData];
+            self.page = 0;
+            [self.tableView.mj_header endRefreshing];
+            self.tableView.mj_footer.hidden = NO;
+        } else {
+            [SVProgressHUD showErrorWithStatus:kBSAPIResponseErrorString];
+        }
+    }];
+}
+
+- (void)loadMoreOldTopics
+{
+    self.isLoadNewTopics = NO;
+//    if (_task.state == NSURLSessionTaskStateRunning) [_task cancel];
+    @weakify(self)
+    [BSTopic loadMoreOldTopicsWithType:_type page:self.page + 1 maxTime:self.maxtime block:^(NSArray *topics, NSString *maxTime, NSError *error) {
+        @strongify(self)
+        if (self.isLoadNewTopics) return ;
+        if (!error) {
+            self.maxtime = maxTime;
+            [self.topics addObjectsFromArray:topics];
+            [self.tableView reloadData];
+            [self.tableView.mj_footer endRefreshing];
+        } else {
+            [SVProgressHUD showErrorWithStatus:kBSAPIResponseErrorString];
+        }
+    }];
+}
+
 
 #pragma mark - private method
 
@@ -88,6 +126,15 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+
+- (void)setupRefresh
+{
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadMoreNewTopics)];
+    self.tableView.mj_header.automaticallyChangeAlpha = YES;
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreOldTopics)];
+    self.tableView.mj_footer.hidden = YES;
+    [self.tableView.mj_header beginRefreshing];
+}
 
 #pragma mark - lazy
 

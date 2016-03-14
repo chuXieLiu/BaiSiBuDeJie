@@ -12,6 +12,8 @@
 		F94398EA1C90215F007253EB /* BSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94398E81C90215F007253EB /* BSLoginViewController.xib */; };
 		F94398ED1C904C31007253EB /* BSVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F94398EC1C904C31007253EB /* BSVerticalButton.m */; };
 		F94398F01C905438007253EB /* BSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F94398EF1C905438007253EB /* BSTextField.m */; };
+		F9448CBA1C96A99400E8C1C5 /* BSPublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9448CB81C96A99400E8C1C5 /* BSPublishViewController.m */; };
+		F9448CBB1C96A99400E8C1C5 /* BSPublishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9448CB91C96A99400E8C1C5 /* BSPublishViewController.xib */; };
 		F9515FE21C8E7B6100D76D6E /* BSRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */; };
 		F9620D171C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D161C8ECB9200B52A52 /* BSRecomendUserTableViewCell.m */; };
 		F9620D1A1C8ECC3700B52A52 /* BSRecomendUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F9620D191C8ECC3700B52A52 /* BSRecomendUser.m */; };
@@ -82,6 +84,9 @@
 		F94398EC1C904C31007253EB /* BSVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSVerticalButton.m; sourceTree = "<group>"; };
 		F94398EE1C905438007253EB /* BSTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTextField.h; sourceTree = "<group>"; };
 		F94398EF1C905438007253EB /* BSTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTextField.m; sourceTree = "<group>"; };
+		F9448CB71C96A99400E8C1C5 /* BSPublishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSPublishViewController.h; sourceTree = "<group>"; };
+		F9448CB81C96A99400E8C1C5 /* BSPublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPublishViewController.m; sourceTree = "<group>"; };
+		F9448CB91C96A99400E8C1C5 /* BSPublishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSPublishViewController.xib; sourceTree = "<group>"; };
 		F9515FE01C8E7B6100D76D6E /* BSRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRecommendViewController.h; sourceTree = "<group>"; };
 		F9515FE11C8E7B6100D76D6E /* BSRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSRecommendViewController.m; sourceTree = "<group>"; };
 		F9620D151C8ECB9200B52A52 /* BSRecomendUserTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSRecomendUserTableViewCell.h; sourceTree = "<group>"; };
@@ -241,6 +246,40 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F9448CB31C96A97E00E8C1C5 /* Publish-发帖 */ = {
+			isa = PBXGroup;
+			children = (
+				F9448CB41C96A97E00E8C1C5 /* Controller */,
+				F9448CB51C96A97E00E8C1C5 /* Model */,
+				F9448CB61C96A97E00E8C1C5 /* View */,
+			);
+			path = "Publish-发帖";
+			sourceTree = "<group>";
+		};
+		F9448CB41C96A97E00E8C1C5 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F9448CB71C96A99400E8C1C5 /* BSPublishViewController.h */,
+				F9448CB81C96A99400E8C1C5 /* BSPublishViewController.m */,
+				F9448CB91C96A99400E8C1C5 /* BSPublishViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F9448CB51C96A97E00E8C1C5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F9448CB61C96A97E00E8C1C5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F9E996541C8EA04D00C0A549 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -315,6 +354,7 @@
 			children = (
 				F9EE42651C8D2B050034482C /* Essence-精华 */,
 				F9EE42711C8D2B050034482C /* New-最新 */,
+				F9448CB31C96A97E00E8C1C5 /* Publish-发帖 */,
 				F9EE42691C8D2B050034482C /* FriendTrends-关注 */,
 				F9EE426D1C8D2B050034482C /* Me-我 */,
 				F94398DF1C90210E007253EB /* Login-登录 */,
@@ -673,6 +713,7 @@
 				F9E9965E1C8EA8D000C0A549 /* BSRecommendViewController.storyboard in Resources */,
 				F98810FF1C943B9F0008FF7E /* BSTopicPictureView.xib in Resources */,
 				F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */,
+				F9448CBB1C96A99400E8C1C5 /* BSPublishViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +788,7 @@
 			files = (
 				F9EE427A1C8D2B050034482C /* main.m in Sources */,
 				F9EE42791C8D2B050034482C /* AppDelegate.m in Sources */,
+				F9448CBA1C96A99400E8C1C5 /* BSPublishViewController.m in Sources */,
 				F9EE428A1C8D2DC80034482C /* BSNewViewController.m in Sources */,
 				F98810E61C92C4210008FF7E /* BSTopicViewController.m in Sources */,
 				F9620D1A1C8ECC3700B52A52 /* BSRecomendUser.m in Sources */,

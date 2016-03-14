@@ -61,6 +61,7 @@
     _topic = topic;
     [_profileImageView sd_setImageWithURL:[NSURL URLWithString:_topic.profileImage] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     _screenNameLabel.text = _topic.screenName;
+    //_screenNameLabel.text = @":҉              ❤所知丶";
     _createTimeLabel.text = _topic.createTime;
     [self setTitle:_dingButton count:_topic.ding placeHolder:@"顶"];
     [self setTitle:_caiButton count:_topic.cai placeHolder:@"踩"];
@@ -74,6 +75,7 @@
     } else {
         self.pictureView.hidden = YES;
     }
+    
 }
 
 - (void)setTitle:(UIButton *)button count:(NSInteger)count placeHolder:(NSString *)placeHolder

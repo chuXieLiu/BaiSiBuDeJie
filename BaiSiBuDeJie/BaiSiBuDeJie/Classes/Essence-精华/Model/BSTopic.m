@@ -11,6 +11,21 @@
 
 
 
+static NSString * const kBSTopicParamsKeyType = @"type";
+
+static NSString * const kBSTopicParamsKeyPage = @"page";
+
+static NSString * const kBSTopicParamsKeyMaxTime = @"maxtime";
+
+
+static NSString * const kBSTopicParamsKeyAValue = @"list";
+static NSString * const kBSTopicParamsKeyCValue = @"data";
+
+
+static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
+
+
+
 @interface BSTopic () <YYModel>
 
 @property (nonatomic,assign,readwrite) CGFloat cellHeight;
@@ -18,6 +33,42 @@
 @end
 
 @implementation BSTopic
+
++ (NSURLSessionTask *)loadNewTopicsWithType:(NSInteger)type Block:(void (^)(NSArray *, NSString *,NSError *))block
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kBSAPIParamsKeyA] = kBSTopicParamsKeyAValue;
+    params[kBSAPIParamsKeyC] = kBSTopicParamsKeyCValue;
+    params[kBSTopicParamsKeyType] = @(type);
+    return [self loadTopicWithParams:params block:block];
+}
+
++ (NSURLSessionTask *)loadMoreOldTopicsWithType:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^)(NSArray *, NSString *, NSError *))block
+{
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[kBSAPIParamsKeyA] = kBSTopicParamsKeyAValue;
+    params[kBSAPIParamsKeyC] = kBSTopicParamsKeyCValue;
+    params[kBSTopicParamsKeyType] = @(type);
+    params[kBSTopicParamsKeyPage] = @(page);
+    params[kBSTopicParamsKeyMaxTime] = maxTime;
+    return [self loadTopicWithParams:params block:block];
+}
+
++ (NSURLSessionTask *)loadTopicWithParams:(NSDictionary *)params block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block
+{
+    return [[BSAPIClient shareManager] GET:@"http://api.budejie.com/api/api_open.php" parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        if (block) {
+            NSArray *list = [BSTopic bs_modelWithDictionaryList:responseObject[kBSAPIResponseKeyList]];
+            NSString *maxTime = responseObject[kBSAPIResponseKeyInfo][kBSTopicResponseKeyMaxTime];
+            block(list,maxTime,nil);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (block) {
+            block(@[],nil,error);
+        }
+    }];
+}
 
 
 

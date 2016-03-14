@@ -9,14 +9,10 @@
 #import "BSRecommendCategory.h"
 
 
-static NSString * const kBSCategoryParamsKeyA = @"a";
-static NSString * const kBSCategoryParamsKeyC = @"c";
+
 
 static NSString * const kBSCategoryParamsKeyAValue = @"category";
 static NSString * const kBSCategoryParamsKeyCValue = @"subscribe";
-
-
-static NSString * const kBSCategoryResponseKeyList = @"list";
 
 
 @implementation BSRecommendCategory
@@ -35,11 +31,11 @@ static NSString * const kBSCategoryResponseKeyList = @"list";
 + (NSURLSessionTask *)loadRecommendCategoriesBlock:(void (^)(NSArray *, NSError *))block
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[kBSCategoryParamsKeyA] = kBSCategoryParamsKeyAValue;
-    params[kBSCategoryParamsKeyC] = kBSCategoryParamsKeyCValue;
+    params[kBSAPIParamsKeyA] = kBSCategoryParamsKeyAValue;
+    params[kBSAPIParamsKeyC] = kBSCategoryParamsKeyCValue;
     return [[BSAPIClient shareManager] GET:kBSAPIBaseURLString parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if (block) {
-            NSArray *list = [BSRecommendCategory bs_modelWithDictionaryList:responseObject[kBSCategoryResponseKeyList]];
+            NSArray *list = [BSRecommendCategory bs_modelWithDictionaryList:responseObject[kBSAPIResponseKeyList]];
             block (list,nil);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

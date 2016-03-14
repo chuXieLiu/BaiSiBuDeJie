@@ -86,10 +86,10 @@ static NSInteger const kBSTabBarItemCount = 5;
 
 - (void)addEvent:(UIButton *)sender
 {
-    BSLogFunc;
     if ([_tabBarDelegate respondsToSelector:@selector(tabBar:didClickAddButton:)]) {
         [_tabBarDelegate tabBar:self didClickAddButton:sender];
     }
+    
 }
 
 

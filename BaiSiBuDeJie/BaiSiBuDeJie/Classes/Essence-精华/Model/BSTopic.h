@@ -8,9 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
-
-
 @interface BSTopic : NSObject
 
 @property (nonatomic,copy) NSString *profileImage;
@@ -52,5 +49,18 @@
 @property (nonatomic,assign) BSEssenceTopicType type;
 
 @property (nonatomic,assign,readonly) CGFloat cellHeight;
+
+
+
++ (NSURLSessionTask *)loadNewTopicsWithType:(NSInteger)type Block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
+
++ (NSURLSessionTask *)loadMoreOldTopicsWithType:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
+
+
+
+
+
+
+
 
 @end

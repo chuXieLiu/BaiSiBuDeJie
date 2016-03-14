@@ -12,12 +12,15 @@
 #import "BSNewViewController.h"
 #import "BSTrendsViewController.h"
 #import "BSMeViewController.h"
+#import "BSPublishViewController.h"
 #import "BSTabBarController+BS.h"
 #import "BSTabBar.h"
 
-
-
 @interface BSTabBarController ()
+<
+    BSTabBarDelegate
+>
+
 
 @end
 
@@ -26,7 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self setValue:[BSTabBar new] forKey:@"tabBar"];
+    BSTabBar *tabBar = [[BSTabBar alloc] init];
+    tabBar.tabBarDelegate = self;
+    [self setValue:tabBar forKey:@"tabBar"];
     
     BSEssenceViewController *essenceVC = [BSEssenceViewController new];
     [self setupChildVC:essenceVC title:@"精华" image:@"tabBar_essence_icon" selectImage:@"tabBar_essence_click_icon"];
@@ -41,6 +46,11 @@
     [self setupChildVC:meVC title:@"我" image:@"tabBar_me_icon" selectImage:@"tabBar_me_click_icon"];
 }
 
+- (void)tabBar:(BSTabBar *)tabBar didClickAddButton:(UIButton *)addButton
+{
+    BSPublishViewController *publishVC = [[BSPublishViewController alloc] init];
+    [self presentViewController:publishVC animated:NO completion:nil];
+}
 
 
 

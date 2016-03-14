@@ -32,7 +32,7 @@
     CGFloat imageViewW = BS_SCREEN_WIDTH;
     CGFloat imageViewH = imageViewW * _topic.height / _topic.width;
     if (imageViewH > BS_SCREEN_HEIGHT) {
-        _imageView.bounds = CGRectMake(0, 0, imageViewW, imageViewH);
+        _imageView.frame = CGRectMake(0, 0, imageViewW, imageViewH);
         _scrollView.contentSize = CGSizeMake(imageViewW, imageViewH);
     } else {
         _imageView.size = CGSizeMake(imageViewW, imageViewH);

@@ -21,7 +21,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvy-vc-48X">
-                    <rect key="frame" x="10" y="10" width="40" height="40"/>
+                    <rect key="frame" x="10" y="20" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="Vo6-O1-iVW"/>
                         <constraint firstAttribute="height" constant="40" id="j39-fD-3Lu"/>
@@ -62,7 +62,7 @@
                 <constraint firstAttribute="bottom" secondItem="lXu-so-uu7" secondAttribute="bottom" constant="10" id="NE6-sX-cOs"/>
                 <constraint firstItem="Tvy-vc-48X" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="OoM-XP-cE1"/>
                 <constraint firstItem="qMp-zB-Id1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Qib-hY-rVJ"/>
-                <constraint firstItem="Tvy-vc-48X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="10" id="Zd5-ax-dqu"/>
+                <constraint firstItem="Tvy-vc-48X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Zd5-ax-dqu"/>
                 <constraint firstItem="eyp-2X-o2K" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="cXK-pj-qrt"/>
                 <constraint firstAttribute="bottom" secondItem="qMp-zB-Id1" secondAttribute="bottom" id="eiB-Op-cQg"/>
                 <constraint firstAttribute="trailing" secondItem="lXu-so-uu7" secondAttribute="trailing" constant="10" id="km7-Ef-GxJ"/>

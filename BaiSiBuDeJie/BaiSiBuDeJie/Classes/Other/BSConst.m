@@ -7,10 +7,23 @@
 //
 
 
+// networking
+
 NSString * const kBSAPIBaseURLString = @"http://api.budejie.com/api/api_open.php";
 
 
 NSString * const kBSAPIResponseErrorString = @"网络访问错误";
+
+
+NSString * const kBSAPIParamsKeyA = @"a";
+
+NSString * const kBSAPIParamsKeyC = @"c";
+
+NSString * const kBSAPIResponseKeyInfo = @"info";
+
+NSString * const kBSAPIResponseKeyList = @"list";
+
+NSString * const kBSAPIResponsekeyTotal = @"total";
 
 
 // topic
