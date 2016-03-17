@@ -39,6 +39,7 @@
 		F98810FA1C93B3B20008FF7E /* NSDate+BSExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810F91C93B3B20008FF7E /* NSDate+BSExtension.m */; };
 		F98810FD1C943B940008FF7E /* BSTopicPictureView.m in Sources */ = {isa = PBXBuildFile; fileRef = F98810FC1C943B940008FF7E /* BSTopicPictureView.m */; };
 		F98810FF1C943B9F0008FF7E /* BSTopicPictureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F98810FE1C943B9F0008FF7E /* BSTopicPictureView.xib */; };
+		F9889CCE1C9AACD30078FDF4 /* BSTopWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F9889CCD1C9AACD30078FDF4 /* BSTopWindow.m */; };
 		F998026E1C906874005C8937 /* BSTrendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F998026D1C906874005C8937 /* BSTrendsViewController.xib */; };
 		F9C280A41C8F1E90002991C6 /* BSConst.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C280A31C8F1E90002991C6 /* BSConst.m */; };
 		F9E9964A1C8E918E00C0A549 /* BSRecommendCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = F9E996491C8E918E00C0A549 /* BSRecommendCategory.m */; };
@@ -142,6 +143,8 @@
 		F98810FB1C943B940008FF7E /* BSTopicPictureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTopicPictureView.h; sourceTree = "<group>"; };
 		F98810FC1C943B940008FF7E /* BSTopicPictureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTopicPictureView.m; sourceTree = "<group>"; };
 		F98810FE1C943B9F0008FF7E /* BSTopicPictureView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSTopicPictureView.xib; sourceTree = "<group>"; };
+		F9889CCC1C9AACD30078FDF4 /* BSTopWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSTopWindow.h; sourceTree = "<group>"; };
+		F9889CCD1C9AACD30078FDF4 /* BSTopWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSTopWindow.m; sourceTree = "<group>"; };
 		F998026D1C906874005C8937 /* BSTrendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BSTrendsViewController.xib; sourceTree = "<group>"; };
 		F9C280A21C8F1E90002991C6 /* BSConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSConst.h; sourceTree = "<group>"; };
 		F9C280A31C8F1E90002991C6 /* BSConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSConst.m; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 			children = (
 				F9EE427F1C8D2D4B0034482C /* BSTabBar.h */,
 				F9EE42801C8D2D4B0034482C /* BSTabBar.m */,
+				F9889CCC1C9AACD30078FDF4 /* BSTopWindow.h */,
+				F9889CCD1C9AACD30078FDF4 /* BSTopWindow.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -867,6 +872,7 @@
 				F9F1FE2C1C952B5F00438DBC /* BSCircularProgressView.m in Sources */,
 				F9E996531C8E97E600C0A549 /* NSObject+BSModel.m in Sources */,
 				F9EE428D1C8D2DE50034482C /* BSTrendsViewController.m in Sources */,
+				F9889CCE1C9AACD30078FDF4 /* BSTopWindow.m in Sources */,
 				F9515FE21C8E7B6100D76D6E /* BSRecommendViewController.m in Sources */,
 				F9620D1D1C8ED95300B52A52 /* UIImage+BS.m in Sources */,
 				F9448CD81C994F0C00E8C1C5 /* BSCommentHeaderView.m in Sources */,

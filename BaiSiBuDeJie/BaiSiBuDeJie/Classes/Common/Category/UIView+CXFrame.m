@@ -130,4 +130,14 @@
 }
 
 
+- (BOOL)isShowingOnKeyWindow
+{
+    if (self.isHidden) return NO;
+    if (self.alpha < 0.01) return NO;
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    if (self.window != keyWindow) return NO;
+    CGRect subviewRect = [keyWindow convertRect:self.frame fromView:self.superview];
+    return CGRectIntersectsRect(subviewRect, keyWindow.bounds);
+}
+
 @end

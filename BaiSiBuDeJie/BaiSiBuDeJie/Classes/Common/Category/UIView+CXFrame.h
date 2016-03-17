@@ -21,5 +21,6 @@
 @property (nonatomic,assign) CGFloat centerY;
 @property (nonatomic,assign) CGSize size;
 
+- (BOOL)isShowingOnKeyWindow;
 
 @end
