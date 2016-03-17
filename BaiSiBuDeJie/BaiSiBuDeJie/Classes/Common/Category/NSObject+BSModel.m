@@ -19,13 +19,15 @@
 + (id)bs_modelWithDictionaryList:(NSArray<NSDictionary *> *)list
 {
     if (list) {
-        NSMutableArray *array = @[].mutableCopy;
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:list.count];
         for (NSDictionary *dict in list) {
-            [array addObject:[self bs_modelWithDictionary:dict]];
+            if (dict) {
+                [array addObject:[self bs_modelWithDictionary:dict]];
+            }
         }
         return array.copy;
     }
-    return @[].mutableCopy;
+    return @[].copy;
 }
 
 

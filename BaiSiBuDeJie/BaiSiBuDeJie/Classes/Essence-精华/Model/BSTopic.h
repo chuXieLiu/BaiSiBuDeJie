@@ -10,6 +10,8 @@
 
 @interface BSTopic : NSObject
 
+@property (nonatomic,assign) NSInteger topicId;
+
 @property (nonatomic,copy) NSString *profileImage;
 
 @property (nonatomic,copy) NSString *screenName;
@@ -37,6 +39,18 @@
 @property (nonatomic,assign) BOOL isGif;
 
 @property (nonatomic,assign) BOOL isLongPicture; // 是否为长图
+
+@property (nonatomic,copy) NSString *voiceuri;
+
+@property (nonatomic,assign) NSInteger voicetime;
+
+@property (nonatomic,copy) NSString *videouri;
+
+@property (nonatomic,assign) NSInteger videotime;
+
+@property (nonatomic, assign) NSInteger playcount;  // 播放次数
+
+@property (nonatomic,strong) NSArray *topCmt;   // 最热评论
 
 @property (nonatomic,assign) NSInteger ding;    // 顶
 

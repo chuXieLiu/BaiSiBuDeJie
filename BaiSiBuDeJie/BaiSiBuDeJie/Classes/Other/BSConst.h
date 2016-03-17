@@ -55,6 +55,16 @@ UIKIT_EXTERN CGFloat const kBSTopicCellMaxPictureHeight;
 
 UIKIT_EXTERN CGFloat const kBSTopicCellBreakPictureHeight;
 
+UIKIT_EXTERN CGFloat const kBSTopicCellTopCommentTitleHeight;
+
+UIKIT_EXTERN CGFloat const kBSTopicCellTopCommentMargin; // 标题与内容的间距
+
+
+
+// 男
+UIKIT_EXTERN NSString * const kBSUserSexMan;
+// 女
+UIKIT_EXTERN NSString * const kBSUserSexFemale;
 
 
 

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BSTopicVideoView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="VQX-uc-vg9" userLabel="占位图">
+                    <rect key="frame" x="0.0" y="20" width="320" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="25" id="Gaq-Dy-eQo"/>
+                    </constraints>
+                </imageView>
+                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pWW-tS-90d" userLabel="大图">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ma-Dy-1fS" userLabel="播放次数">
+                    <rect key="frame" x="0.0" y="305.5" width="31" height="14.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ai-IH-6so" userLabel="播放按钮">
+                    <rect key="frame" x="124.5" y="124.5" width="71" height="71"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="71" id="VfB-RZ-CU5"/>
+                        <constraint firstAttribute="height" constant="71" id="wYE-0L-s49"/>
+                    </constraints>
+                    <state key="normal" image="video-play"/>
+                    <connections>
+                        <action selector="playVideo:" destination="iN0-l3-epB" eventType="touchUpInside" id="NA3-UA-JCT"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWu-CS-gwt" userLabel="时长">
+                    <rect key="frame" x="288.5" y="305.5" width="31" height="14.5"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="fWu-CS-gwt" secondAttribute="bottom" id="0pK-Pe-i1x"/>
+                <constraint firstAttribute="trailing" secondItem="VQX-uc-vg9" secondAttribute="trailing" id="57Z-aY-2KW"/>
+                <constraint firstItem="pWW-tS-90d" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="67v-Ks-hhu"/>
+                <constraint firstItem="8ai-IH-6so" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="88t-Mz-tyy"/>
+                <constraint firstAttribute="bottom" secondItem="pWW-tS-90d" secondAttribute="bottom" id="8Kh-lj-GH9"/>
+                <constraint firstItem="8ai-IH-6so" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ceu-v2-XNO"/>
+                <constraint firstItem="pWW-tS-90d" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ihv-U2-ua3"/>
+                <constraint firstAttribute="bottom" secondItem="1Ma-Dy-1fS" secondAttribute="bottom" id="RBn-MF-dRR"/>
+                <constraint firstAttribute="trailing" secondItem="pWW-tS-90d" secondAttribute="trailing" id="TCg-GX-T75"/>
+                <constraint firstItem="VQX-uc-vg9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="TkK-xy-MyX"/>
+                <constraint firstItem="1Ma-Dy-1fS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qRD-aH-dFI"/>
+                <constraint firstItem="VQX-uc-vg9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="vb9-Hd-nFB"/>
+                <constraint firstAttribute="trailing" secondItem="fWu-CS-gwt" secondAttribute="trailing" id="xih-qN-czo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bigImageView" destination="pWW-tS-90d" id="ycr-gF-eiH"/>
+                <outlet property="playcountLabel" destination="1Ma-Dy-1fS" id="7s1-GV-dTz"/>
+                <outlet property="videoTimeLabel" destination="fWu-CS-gwt" id="3hL-A7-7VB"/>
+            </connections>
+            <point key="canvasLocation" x="322" y="243"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="imageBackground" width="75" height="15"/>
+        <image name="video-play" width="71" height="71"/>
+    </resources>
+</document>

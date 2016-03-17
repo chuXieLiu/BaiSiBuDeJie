@@ -112,7 +112,7 @@
                                                                                  ]
                                                                       delegate:self];
     [topicView setSelectTopic:0 animated:YES];
-    topicView.backgroundColor = BS_RGBAColor(248, 248, 248, 0.7);
+    topicView.backgroundColor = BS_RGBAColor(248, 248, 248, 0.8);
     [self.view addSubview:topicView];
     _topicView = topicView;
     [topicView mas_makeConstraints:^(MASConstraintMaker *make) {

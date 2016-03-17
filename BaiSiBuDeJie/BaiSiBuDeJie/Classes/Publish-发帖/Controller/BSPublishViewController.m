@@ -44,7 +44,7 @@ static CFTimeInterval const kBSAnimationDuration = 0.1f;
     
     self.view.userInteractionEnabled = NO;
     
-    for (int i = 0; i < images.count; i++) {
+    for (NSInteger i = 0; i < images.count; i++) {
         BSVerticalButton *button = [[BSVerticalButton alloc] init];
         [button setImage:[UIImage imageNamed:images[i]] forState:UIControlStateNormal];
         [button setTitle:titles[i] forState:UIControlStateNormal];
@@ -52,17 +52,17 @@ static CFTimeInterval const kBSAnimationDuration = 0.1f;
         button.titleLabel.font = [UIFont systemFontOfSize:14.0f];
         [self.view addSubview:button];
         
-        int row = i / maxCol;   // 行
-        int col = i % maxCol;   // 列
+        NSInteger row = i / maxCol;   // 行
+        NSInteger col = i % maxCol;   // 列
         
         CGFloat buttonX = leftMargin + (buttonW + horizontalMargin) * col;
         CGFloat buttonY = startY + (buttonH + verticalMargin) * row;
         
-        int newI = (count - 1 - i);
+        NSInteger newI = (count - 1 - i);
         
-        int newRow = newI / maxCol;
+        NSInteger newRow = newI / maxCol;
         
-        int midleCol = maxCol / 2;   // 中间一列
+        NSInteger midleCol = maxCol / 2;   // 中间一列
         
         CGFloat start = 0.f;
         

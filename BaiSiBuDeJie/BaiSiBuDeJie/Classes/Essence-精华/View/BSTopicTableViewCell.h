@@ -15,4 +15,6 @@
 
 @property (nonatomic,strong) BSTopic *topic;
 
++ (instancetype)topicTableViewCell;
+
 @end

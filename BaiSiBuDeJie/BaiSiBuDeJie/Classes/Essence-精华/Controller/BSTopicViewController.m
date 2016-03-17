@@ -10,6 +10,7 @@
 #import "BSTopic.h"
 #import "BSTopicTableViewCell.h"
 #import <MJRefresh.h>
+#import "BSCommentViewController.h"
 
 
 static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCellIdentifier";
@@ -23,8 +24,6 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 @property (nonatomic,copy) NSString *maxtime;   // 最大帖子数
 
 @property (nonatomic,assign) BOOL isLoadNewTopics;
-
-//@property (nonatomic,strong) NSURLSessionTask *task;
 
 
 @end
@@ -51,6 +50,7 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     BSTopicTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kBSTopicTableViewCellIdentifier];
+    cell.topic = _topics[indexPath.row];
     return cell;
 }
 
@@ -62,11 +62,13 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
     return topic.cellHeight;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([cell isKindOfClass:[BSTopicTableViewCell class]]) {
-        ((BSTopicTableViewCell *)cell).topic = _topics[indexPath.row];
-    }
+    BSTopic *topic = _topics[indexPath.row];
+    BSCommentViewController *commentVC = [[BSCommentViewController alloc] init];
+    commentVC.topic = topic;
+    [self.navigationController pushViewController:commentVC animated:YES];
 }
 
 #pragma mark - target event
@@ -74,7 +76,6 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (void)loadMoreNewTopics
 {
     self.isLoadNewTopics = YES;
-//    if (_task.state == NSURLSessionTaskStateRunning) [_task cancel];
     @weakify(self)
     [BSTopic loadNewTopicsWithType:_type Block:^(NSArray *topics, NSString *maxTime, NSError *error) {
         if (!self.isLoadNewTopics) return ;
@@ -96,7 +97,6 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (void)loadMoreOldTopics
 {
     self.isLoadNewTopics = NO;
-//    if (_task.state == NSURLSessionTaskStateRunning) [_task cancel];
     @weakify(self)
     [BSTopic loadMoreOldTopicsWithType:_type page:self.page + 1 maxTime:self.maxtime block:^(NSArray *topics, NSString *maxTime, NSError *error) {
         @strongify(self)

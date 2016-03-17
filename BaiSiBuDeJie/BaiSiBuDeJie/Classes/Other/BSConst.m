@@ -43,3 +43,31 @@ CGFloat const kBSTopicCellToolBarheight = 40.0f;
 CGFloat const kBSTopicCellMaxPictureHeight = 800.0f;
 
 CGFloat const kBSTopicCellBreakPictureHeight = 250.0f;
+
+CGFloat const kBSTopicCellTopCommentTitleHeight = 18.0f;
+
+CGFloat const kBSTopicCellTopCommentMargin = 1.0f;  // 标题与内容的间距
+
+
+// 男
+NSString * const kBSUserSexMan = @"m";
+// 女
+NSString * const kBSUserSexFemale = @"f";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

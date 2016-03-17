@@ -10,6 +10,12 @@
 #import <UIImageView+WebCache.h>
 #import "BSTopic.h"
 #import "BSTopicPictureView.h"
+#import "BSTopicVideoView.h"
+#import "BSTopicVoiceView.h"
+#import "BSComment.h"
+#import "BSUser.h"
+
+
 
 @interface BSTopicTableViewCell ()
 
@@ -31,12 +37,24 @@
 
 @property (nonatomic,weak) BSTopicPictureView *pictureView;
 
+@property (nonatomic,weak) BSTopicVideoView *videoView;
+
+@property (nonatomic,weak) BSTopicVoiceView *voiceView;
+
+@property (weak, nonatomic) IBOutlet UIView *commentView;
+
+@property (weak, nonatomic) IBOutlet UILabel *hotCommentLabel;
 
 
 
 @end
 
 @implementation BSTopicTableViewCell
+
++ (instancetype)topicTableViewCell
+{
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].lastObject;
+}
 
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor whiteColor];
@@ -49,10 +67,12 @@
 
 - (void)setFrame:(CGRect)frame
 {
+
     frame.origin.x = kBSTopicCellMargin;
     frame.size.width -= 2 * kBSTopicCellMargin;
     frame.origin.y += kBSTopicCellMargin;
-    frame.size.height -= kBSTopicCellMargin;
+    frame.size.height = self.topic.cellHeight - kBSTopicCellMargin;
+    
     [super setFrame:frame];
 }
 
@@ -69,13 +89,35 @@
     [self setTitle:_repostButton count:_topic.repost placeHolder:@"转发"];
     _textContentLabel.attributedText = _topic.attributeText;
     if (_topic.type == BSEssenceTopicTypePicture) {
-        self.pictureView.hidden = NO;
+        [self hidenPicture:NO voice:YES video:YES];
         self.pictureView.topic = topic;
         _pictureView.frame = _topic.pictureFrame;
+    } else if (_topic.type == BSEssenceTopicTypeVoice) {
+        [self hidenPicture:YES voice:NO video:YES];
+        self.voiceView.topic = topic;
+        _voiceView.frame = _topic.pictureFrame;
+    } else if (_topic.type == BSEssenceTopicTypeVideo) {
+        [self hidenPicture:YES voice:YES video:NO];
+        self.videoView.topic = topic;
+        _videoView.frame = _topic.pictureFrame;
+    } else {        // 段子
+        [self hidenPicture:YES voice:YES video:YES];
+    }
+    BSComment *comment = _topic.topCmt.firstObject;
+    if (comment.content.length > 0) {
+        _commentView.hidden = NO;
+        _hotCommentLabel.attributedText = comment.attributeTopContent;
     } else {
-        self.pictureView.hidden = YES;
+        _commentView.hidden = YES;
     }
     
+}
+
+- (void)hidenPicture:(BOOL)picture voice:(BOOL)voice video:(BOOL)video
+{
+    self.pictureView.hidden = picture;
+    self.voiceView.hidden = voice;
+    self.videoView.hidden = video;
 }
 
 - (void)setTitle:(UIButton *)button count:(NSInteger)count placeHolder:(NSString *)placeHolder
@@ -97,6 +139,27 @@
     }
     return _pictureView;
 }
+
+- (BSTopicVideoView *)videoView
+{
+    if (_videoView == nil) {
+        BSTopicVideoView *videoView = [BSTopicVideoView videoView];
+        [self.contentView addSubview:videoView];
+        _videoView = videoView;
+    }
+    return _videoView;
+}
+
+- (BSTopicVoiceView *)voiceView
+{
+    if (_voiceView == nil) {
+        BSTopicVoiceView *voiceView = [BSTopicVoiceView voiceView];
+        [self.contentView addSubview:voiceView];
+        _voiceView = voiceView;
+    }
+    return _voiceView;
+}
+
 
 
 @end

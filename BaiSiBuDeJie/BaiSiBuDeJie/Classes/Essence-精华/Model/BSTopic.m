@@ -8,6 +8,8 @@
 
 #import "BSTopic.h"
 #import "NSDate+BSExtension.h"
+#import "BSUser.h"
+#import "BSComment.h"
 
 
 
@@ -77,11 +79,10 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
     if (!_cellHeight) {
         _cellHeight += kBSTopicCellIconHeight +  2 *kBSTopicCellMargin; // icon头像
         CGFloat maxW = BS_SCREEN_WIDTH - 4 * kBSTopicCellMargin;
-        CGSize size = CGSizeMake( maxW, MAXFLOAT);
-        CGFloat textHeight = [_text boundingRectWithSize:size
-                                                 options:NSStringDrawingUsesLineFragmentOrigin
-                                              attributes:[self textAttributes]
-                                                 context:nil].size.height;
+        CGSize size = CGSizeMake(maxW, MAXFLOAT);
+        CGFloat textHeight = [self.attributeText boundingRectWithSize:size
+                                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                                              context:nil].size.height;
         _cellHeight += textHeight + kBSTopicCellMargin;    // 文字
         
         if (self.type == BSEssenceTopicTypePicture) {
@@ -93,6 +94,22 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
             }
             _pictureFrame = CGRectMake(kBSTopicCellMargin, _cellHeight, pictureW, pictureH);
             _cellHeight += pictureH + kBSTopicCellMargin;   // 图片
+        } else if (self.type == BSEssenceTopicTypeVoice || self.type == BSEssenceTopicTypeVideo) {
+            CGFloat pictureW = maxW;
+            CGFloat pictureH = floorf(pictureW * _height / _width);
+            if (pictureH > kBSTopicCellMaxPictureHeight) {
+                pictureH = kBSTopicCellBreakPictureHeight;
+            }
+            _pictureFrame = CGRectMake(kBSTopicCellMargin, _cellHeight, pictureW, pictureH);
+            _cellHeight += pictureH + kBSTopicCellMargin;   // 图片
+        }
+        
+        BSComment *comment = _topCmt.firstObject;
+        if (comment) {
+            CGFloat height = [comment.attributeTopContent boundingRectWithSize:size
+                                                                    options:NSStringDrawingUsesLineFragmentOrigin
+                                                                    context:nil].size.height;
+            _cellHeight += (kBSTopicCellTopCommentTitleHeight +kBSTopicCellTopCommentMargin + height + kBSTopicCellMargin);
         }
         
         _cellHeight += kBSTopicCellToolBarheight + kBSTopicCellMargin; // 工具条+setFrame减去的高度
@@ -106,7 +123,13 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 - (NSAttributedString *)attributeText
 {
     if (!_attributeText) {
-        _attributeText = [[NSAttributedString alloc] initWithString:_text attributes:[self textAttributes]].mutableCopy;
+        NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
+        style.lineSpacing = 5;
+        NSDictionary *attr =  @{
+                  NSParagraphStyleAttributeName : style,
+                  NSFontAttributeName : [UIFont systemFontOfSize:16.0f]
+                  };
+        _attributeText = [[NSAttributedString alloc] initWithString:_text attributes:attr].copy;
     }
     return _attributeText;
 }
@@ -147,18 +170,6 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 
 
 
-- (NSDictionary *)textAttributes
-{
-    NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
-    style.lineSpacing = 5;
-    return  @{
-              NSParagraphStyleAttributeName : style,
-              NSFontAttributeName : [UIFont systemFontOfSize:16.0f]
-              };
-}
-
-
-
 
 + (NSDictionary<NSString *,id> *)modelCustomPropertyMapper
 {
@@ -170,9 +181,18 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
              @"middleImage" : @"image1",
              @"largeImage" : @"image2",
              @"isGif" : @"is_gif",
+             @"topCmt" : @"top_cmt",
+             @"topicId" : @"id"
              };
 }
 
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass
+{
+    return @{
+             @"topCmt" : [BSComment class]
+                 
+                 };
+}
 
 
 
