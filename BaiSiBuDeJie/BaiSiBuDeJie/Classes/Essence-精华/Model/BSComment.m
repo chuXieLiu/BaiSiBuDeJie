@@ -141,7 +141,7 @@ static NSString * const kBSCommentResponseKeyHot = @"hot";
         if (self.voiceuri.length) {
             _cellHeight += 22;   // button 高度
         } else {
-            CGFloat maxW = BS_SCREEN_WIDTH - 4 * kBSTopicCellMargin - 35.0 - 15.0 - kBSTopicCellIconHeight;    // 点赞label宽度、与边框的距离，icon宽度，setFrame减去两个宽度
+            CGFloat maxW = BS_SCREEN_WIDTH - 2 * kBSTopicCellMargin - 35.0 - 15.0 - kBSTopicCellIconHeight;    // 点赞label宽度、与边框的距离，icon宽度，setFrame减去两个宽度
             CGFloat height = [self.attributeContent boundingRectWithSize:CGSizeMake(maxW, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
             _cellHeight += height;
         }

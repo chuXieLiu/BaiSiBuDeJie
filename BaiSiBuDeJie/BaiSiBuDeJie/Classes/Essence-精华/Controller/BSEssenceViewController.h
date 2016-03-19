@@ -10,4 +10,9 @@
 
 @interface BSEssenceViewController : UIViewController
 
+
+// override
+// 重写加载精华或新帖
+- (BSTopicModule)module;
+
 @end

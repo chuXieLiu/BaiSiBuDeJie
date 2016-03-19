@@ -16,6 +16,12 @@ typedef enum : NSUInteger {
 } BSEssenceTopicType;
 
 
+typedef enum : NSUInteger {
+    BSTopicModuleEssence, // 精华
+    BSTopicModuleNew      // 最新
+} BSTopicModule;
+
+
 // networking
 
 UIKIT_EXTERN NSString * const kBSAPIBaseURLString;

@@ -37,6 +37,11 @@
     [self setupTopicView];
 }
 
+- (BSTopicModule)module
+{
+    return BSTopicModuleEssence;
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -69,25 +74,30 @@
     BSTopicViewController *all = [[BSTopicViewController alloc] init];
     all.title = @"全部";
     all.type = BSEssenceTopicTypeAll;
+    all.module = [self module];
     [self addChildViewController:all];
     
     BSTopicViewController *video = [[BSTopicViewController alloc] init];
     video.title = @"视频";
     video.type = BSEssenceTopicTypeVideo;
+    video.module = [self module];
     [self addChildViewController:video];
     
     BSTopicViewController *picture = [[BSTopicViewController alloc] init];
     picture.type = BSEssenceTopicTypePicture;
     picture.title = @"图片";
+    picture.module = [self module];
     [self addChildViewController:picture];
     
     BSTopicViewController *word = [[BSTopicViewController alloc] init];
     word.type = BSEssenceTopicTypeWord;
+    word.module = [self module];
     word.title = @"段子";
     [self addChildViewController:word];
     
     BSTopicViewController *voice = [[BSTopicViewController alloc] init];
     voice.type = BSEssenceTopicTypeVoice;
+    voice.module = [self module];
     voice.title = @"声音";
     [self addChildViewController:voice];
 }

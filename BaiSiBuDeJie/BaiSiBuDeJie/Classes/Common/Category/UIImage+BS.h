@@ -10,8 +10,6 @@
 
 @interface UIImage (BS)
 
-- (UIImage *)imageByRoundCornerRadius:(CGFloat)radius;
-
-- (UIImage *)imageBySize:(CGSize)size;
+- (UIImage *)circleImage;
 
 @end

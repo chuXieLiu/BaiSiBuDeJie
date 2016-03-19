@@ -6,8 +6,8 @@
 //  Copyright © 2016年 CX. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BSEssenceViewController.h"
 
-@interface BSNewViewController : UIViewController
+@interface BSNewViewController : BSEssenceViewController
 
 @end

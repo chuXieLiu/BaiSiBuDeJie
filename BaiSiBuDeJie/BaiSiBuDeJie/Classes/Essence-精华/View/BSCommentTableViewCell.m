@@ -35,17 +35,17 @@
     bgView.image = [UIImage imageNamed:@"mainCellBackground"];
     self.backgroundView = bgView;
     
-    _profileImageView.layer.cornerRadius = _profileImageView.width * 0.5;
-    _profileImageView.layer.masksToBounds = YES;
-    _profileImageView.layer.shouldRasterize = YES;
-    _profileImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
-    self.autoresizingMask = UIViewAutoresizingNone;
+//    _profileImageView.layer.cornerRadius = _profileImageView.width * 0.5;
+//    _profileImageView.layer.masksToBounds = YES;
+//    _profileImageView.layer.shouldRasterize = YES;
+//    _profileImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+//    self.autoresizingMask = UIViewAutoresizingNone;
 }
 
 - (void)setFrame:(CGRect)frame
 {
-    frame.origin.x += 10.0f;
-    frame.size.width -= frame.origin.x * 2;
+//    frame.origin.x += 10.0f;
+//    frame.size.width -= frame.origin.x * 2;
     [super setFrame:frame];
 }
 
@@ -53,7 +53,8 @@
 {
     _comment = comment;
     BSUser *user = _comment.user;
-    [_profileImageView sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+//    [_profileImageView sd_setImageWithURL:[NSURL URLWithString:user.profileImage] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [_profileImageView setHeader:user.profileImage];
     if ([user.sex isEqualToString:kBSUserSexMan]) {
         _sexImageView.image = [UIImage imageNamed:@"Profile_manIcon"];
     } else {

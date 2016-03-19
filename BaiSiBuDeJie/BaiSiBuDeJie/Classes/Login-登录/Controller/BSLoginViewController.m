@@ -7,6 +7,7 @@
 //
 
 #import "BSLoginViewController.h"
+#import "BSTopWindow.h"
 
 @interface BSLoginViewController ()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginLeftCons;
@@ -23,6 +24,19 @@
     self.regitsterButton.layer.masksToBounds = YES;
     self.loginButton.layer.cornerRadius = 5.0f;
     self.loginButton.layer.masksToBounds = YES;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [BSTopWindow hiden];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [BSTopWindow show];
+    
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event

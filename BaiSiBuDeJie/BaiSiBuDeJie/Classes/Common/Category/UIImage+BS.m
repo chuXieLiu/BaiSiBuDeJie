@@ -10,6 +10,27 @@
 
 @implementation UIImage (BS)
 
+- (UIImage *)circleImage
+{
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0);
+    
+    CGContextRef ref = UIGraphicsGetCurrentContext();
+    
+    CGRect rect = CGRectMake(0, 0, self.size.width, self.size.height);
+    
+    CGContextAddEllipseInRect(ref, rect);
+    
+    CGContextClip(ref);
+    
+    CGContextDrawImage(ref, rect, self.CGImage);
+    
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+
+    return newImage;
+}
+
 - (UIImage *)imageByRoundCornerRadius:(CGFloat)radius {
     return [self imageByRoundCornerRadius:radius borderWidth:0 borderColor:nil];
 }
@@ -68,22 +89,5 @@
     return image;
 }
 
-- (UIImage *)imageBySize:(CGSize)size
-{
-    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect rect = CGRectMake(0, 0, size.width, size.height);
-    CGContextScaleCTM(context, 1, -1);
-    CGContextTranslateCTM(context, 0, -rect.size.height);
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, 0, 0) byRoundingCorners:size.width * 0.5 cornerRadii:size];
-    [path closePath];
-    CGContextSaveGState(context);
-    [path addClip];
-    CGContextDrawImage(context, rect, self.CGImage);
-    CGContextRestoreGState(context);
-    UIImage *newImg = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImg;
-}
 
 @end

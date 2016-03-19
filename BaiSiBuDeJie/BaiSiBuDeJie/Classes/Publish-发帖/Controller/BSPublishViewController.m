@@ -25,8 +25,23 @@ static CFTimeInterval const kBSAnimationDuration = 0.1f;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSArray *images = @[@"publish-video", @"publish-picture", @"publish-text", @"publish-audio", @"publish-review", @"publish-offline"];
-    NSArray *titles = @[@"发视频", @"发图片", @"发段子", @"发声音", @"审帖", @"离线下载"];
+    NSArray *images = @[
+                            @"publish-video",
+                            @"publish-picture",
+                            @"publish-text",
+                            @"publish-audio",
+                            @"publish-review",
+                            @"publish-offline"
+                        ];
+    
+    NSArray *titles = @[
+                            @"发视频",
+                            @"发图片",
+                            @"发段子",
+                            @"发声音",
+                            @"审帖",
+                            @"离线下载"
+                        ];
     
     NSInteger count = images.count;
 

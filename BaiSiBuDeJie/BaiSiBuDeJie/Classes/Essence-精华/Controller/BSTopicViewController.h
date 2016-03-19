@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface BSTopicViewController : UITableViewController
 
 @property (nonatomic,assign) BSEssenceTopicType type;
+
+@property (nonatomic,assign) BSTopicModule module;
+
 
 @end

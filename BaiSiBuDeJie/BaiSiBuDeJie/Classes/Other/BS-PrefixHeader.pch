@@ -15,6 +15,7 @@
 #import "NSObject+BSModel.h"
 #import "BSConst.h"
 #import "BSHelper.h"
+#import "UIImageView+BSExtension.h"
 #import <Masonry.h>
 #import <SVProgressHUD.h>
 

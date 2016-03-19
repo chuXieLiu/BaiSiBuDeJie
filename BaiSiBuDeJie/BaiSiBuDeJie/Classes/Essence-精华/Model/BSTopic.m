@@ -21,6 +21,9 @@ static NSString * const kBSTopicParamsKeyMaxTime = @"maxtime";
 
 
 static NSString * const kBSTopicParamsKeyAValue = @"list";
+
+static NSString * const kBSNewTopicParamsKeyAValue = @"newlist";
+
 static NSString * const kBSTopicParamsKeyCValue = @"data";
 
 
@@ -36,19 +39,29 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 
 @implementation BSTopic
 
-+ (NSURLSessionTask *)loadNewTopicsWithType:(NSInteger)type Block:(void (^)(NSArray *, NSString *,NSError *))block
+
+// 加载数据
++ (NSURLSessionTask *)loadNewTopicsWithModule:(BSTopicModule)module type:(NSInteger)type Block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[kBSAPIParamsKeyA] = kBSTopicParamsKeyAValue;
+    if (module == BSTopicModuleEssence) {
+        params[kBSAPIParamsKeyA] = kBSTopicParamsKeyAValue;
+    } else {
+        params[kBSAPIParamsKeyA] = kBSNewTopicParamsKeyAValue;
+    }
     params[kBSAPIParamsKeyC] = kBSTopicParamsKeyCValue;
     params[kBSTopicParamsKeyType] = @(type);
     return [self loadTopicWithParams:params block:block];
 }
 
-+ (NSURLSessionTask *)loadMoreOldTopicsWithType:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^)(NSArray *, NSString *, NSError *))block
++ (NSURLSessionTask *)loadMoreOldTopicsWithModule:(BSTopicModule)module type:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[kBSAPIParamsKeyA] = kBSTopicParamsKeyAValue;
+    if (module == BSTopicModuleEssence) {
+        params[kBSAPIParamsKeyA] = kBSTopicParamsKeyAValue;
+    } else {
+        params[kBSAPIParamsKeyA] = kBSNewTopicParamsKeyAValue;
+    }
     params[kBSAPIParamsKeyC] = kBSTopicParamsKeyCValue;
     params[kBSTopicParamsKeyType] = @(type);
     params[kBSTopicParamsKeyPage] = @(page);
@@ -73,13 +86,15 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 }
 
 
-
+// 计算高度
 - (CGFloat)cellHeight
 {
     if (!_cellHeight) {
         _cellHeight += kBSTopicCellIconHeight +  2 *kBSTopicCellMargin; // icon头像
-        CGFloat maxW = BS_SCREEN_WIDTH - 4 * kBSTopicCellMargin;
+        CGFloat maxW = BS_SCREEN_WIDTH - 2 * kBSTopicCellMargin;
         CGSize size = CGSizeMake(maxW, MAXFLOAT);
+        
+        
         CGFloat textHeight = [self.attributeText boundingRectWithSize:size
                                                               options:NSStringDrawingUsesLineFragmentOrigin
                                                               context:nil].size.height;

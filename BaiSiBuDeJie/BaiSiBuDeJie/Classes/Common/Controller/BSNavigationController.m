@@ -10,6 +10,9 @@
 #import "UIBarButtonItem+BS.h"
 
 @interface BSNavigationController ()
+<
+    UIGestureRecognizerDelegate
+>
 
 @end
 
@@ -29,6 +32,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.interactivePopGestureRecognizer.delegate = self;
+    
 }
 
 
@@ -45,11 +50,15 @@
         
     }
     [super pushViewController:viewController animated:animated];
+    
 }
 
 
 
-
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
+{
+    return YES;
+}
 
 
 

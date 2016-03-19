@@ -58,18 +58,18 @@
 
 - (void)awakeFromNib {
     self.backgroundColor = [UIColor whiteColor];
-    _profileImageView.layer.cornerRadius = _profileImageView.width * 0.5;
-    _profileImageView.layer.masksToBounds = YES;
-    _profileImageView.layer.shouldRasterize = YES;
-    _profileImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+//    _profileImageView.layer.cornerRadius = _profileImageView.width * 0.5;
+//    _profileImageView.layer.masksToBounds = YES;
+//    _profileImageView.layer.shouldRasterize = YES;
+//    _profileImageView.layer.rasterizationScale = [UIScreen mainScreen].scale;
     self.autoresizingMask = UIViewAutoresizingNone;
 }
 
 - (void)setFrame:(CGRect)frame
 {
 
-    frame.origin.x = kBSTopicCellMargin;
-    frame.size.width -= 2 * kBSTopicCellMargin;
+//    frame.origin.x = kBSTopicCellMargin;
+//    frame.size.width -= 2 * kBSTopicCellMargin;
     frame.origin.y += kBSTopicCellMargin;
     frame.size.height = self.topic.cellHeight - kBSTopicCellMargin;
     
@@ -79,7 +79,8 @@
 - (void)setTopic:(BSTopic *)topic
 {
     _topic = topic;
-    [_profileImageView sd_setImageWithURL:[NSURL URLWithString:_topic.profileImage] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+//    [_profileImageView sd_setImageWithURL:[NSURL URLWithString:_topic.profileImage] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [_profileImageView setHeader:_topic.profileImage];
     _screenNameLabel.text = _topic.screenName;
     //_screenNameLabel.text = @":҉              ❤所知丶";
     _createTimeLabel.text = _topic.createTime;

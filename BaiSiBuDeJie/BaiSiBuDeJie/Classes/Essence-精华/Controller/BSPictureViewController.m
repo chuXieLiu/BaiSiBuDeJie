@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIImageView *imageView = [[UIImageView alloc] init];
+    imageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageViewDidTap:)];
+    [imageView addGestureRecognizer:gesture];
     [_scrollView addSubview:imageView];
     _imageView = imageView;
     
@@ -55,8 +58,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-
-
 - (IBAction)save:(UIButton *)sender {
     if (!_imageView.image) {
         [SVProgressHUD showErrorWithStatus:@"图片未完全下载"];
@@ -64,6 +65,7 @@
         UIImageWriteToSavedPhotosAlbum(_imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
     }
 }
+
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
@@ -73,5 +75,11 @@
         [SVProgressHUD showSuccessWithStatus:@"图片保存成功"];
     }
 }
+
+- (void)imageViewDidTap:(UITapGestureRecognizer *)gesture
+{
+    [self back:nil];
+}
+
 
 @end

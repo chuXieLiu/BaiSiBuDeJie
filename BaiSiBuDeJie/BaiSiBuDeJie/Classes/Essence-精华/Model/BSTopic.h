@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface BSTopic : NSObject
 
 @property (nonatomic,assign) NSInteger topicId;
@@ -66,9 +67,9 @@
 
 
 
-+ (NSURLSessionTask *)loadNewTopicsWithType:(NSInteger)type Block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
++ (NSURLSessionTask *)loadNewTopicsWithModule:(BSTopicModule)module type:(NSInteger)type Block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
 
-+ (NSURLSessionTask *)loadMoreOldTopicsWithType:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
++ (NSURLSessionTask *)loadMoreOldTopicsWithModule:(BSTopicModule)module type:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
 
 
 

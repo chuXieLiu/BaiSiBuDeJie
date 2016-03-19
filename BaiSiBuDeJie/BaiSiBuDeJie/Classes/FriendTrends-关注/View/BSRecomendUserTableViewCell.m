@@ -24,16 +24,17 @@
 @implementation BSRecomendUserTableViewCell
 
 - (void)awakeFromNib {
-    _iconView.layer.cornerRadius = _iconView.width * 0.5;
-    _iconView.layer.masksToBounds = YES;
-    _iconView.layer.shouldRasterize = YES;
-    _iconView.layer.rasterizationScale = [UIScreen mainScreen].scale;
+//    _iconView.layer.cornerRadius = _iconView.width * 0.5;
+//    _iconView.layer.masksToBounds = YES;
+//    _iconView.layer.shouldRasterize = YES;
+//    _iconView.layer.rasterizationScale = [UIScreen mainScreen].scale;
 }
 
 - (void)setUser:(BSRecomendUser *)user
 {
     _user = user;
-    [_iconView sd_setImageWithURL:[NSURL URLWithString:_user.header] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+//    [_iconView sd_setImageWithURL:[NSURL URLWithString:_user.header] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    [_iconView setHeader:_user.header];
     _nameLabel.text = _user.name;
     _fansCountLabel.text = [NSString stringWithFormat:@"%zd人关注",_user.fansCount];
 }

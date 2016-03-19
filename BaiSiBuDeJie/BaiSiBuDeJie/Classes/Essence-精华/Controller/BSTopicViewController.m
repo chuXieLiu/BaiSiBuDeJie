@@ -32,10 +32,11 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setup];
+    
     [self setupRefresh];
 }
-
 
 
 #pragma mark - UITableViewDataSource
@@ -77,7 +78,7 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 {
     self.isLoadNewTopics = YES;
     @weakify(self)
-    [BSTopic loadNewTopicsWithType:_type Block:^(NSArray *topics, NSString *maxTime, NSError *error) {
+    [BSTopic loadNewTopicsWithModule:[self module] type:_type Block:^(NSArray *topics, NSString *maxTime, NSError *error) {
         if (!self.isLoadNewTopics) return ;
         if (!error) {
             @strongify(self)
@@ -98,7 +99,7 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 {
     self.isLoadNewTopics = NO;
     @weakify(self)
-    [BSTopic loadMoreOldTopicsWithType:_type page:self.page + 1 maxTime:self.maxtime block:^(NSArray *topics, NSString *maxTime, NSError *error) {
+    [BSTopic loadMoreOldTopicsWithModule:[self module] type:_type page:self.page + 1 maxTime:self.maxtime block:^(NSArray *topics, NSString *maxTime, NSError *error) {
         @strongify(self)
         if (self.isLoadNewTopics) return ;
         if (!error) {
