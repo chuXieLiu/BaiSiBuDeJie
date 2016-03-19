@@ -98,7 +98,47 @@ static NSString * const kBSCommentTableViewCellIdentifier = @"kBSCommentTableVie
     return comment.cellHeight;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UIMenuController *menuVC = [UIMenuController sharedMenuController];
+    if ([menuVC isMenuVisible]) {
+        return;
+    } else {// 点击其他cell的时候此时这个cell已经不是第一响应者了
+        BSCommentTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell becomeFirstResponder];
+        UIMenuItem *ding = [[UIMenuItem alloc] initWithTitle:@"顶" action:@selector(ding:)];
+        UIMenuItem *replay = [[UIMenuItem alloc] initWithTitle:@"回复" action:@selector(replay:)];
+        UIMenuItem *report = [[UIMenuItem alloc] initWithTitle:@"举报" action:@selector(report:)];
+        menuVC.menuItems = @[ding, replay, report];
+        CGRect rect = CGRectMake(0, cell.height * 0.5, cell.width, cell.height * 0.5);
+        [menuVC setTargetRect:rect inView:cell];
+        [menuVC setMenuVisible:YES animated:YES];
+    }
+    
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];
+}
+
+
 #pragma mark - target event 
+
+- (void)ding:(UIMenuController *)menuVC
+{
+    BSLogFunc
+}
+
+- (void)replay:(UIMenuController *)menuVC
+{
+    BSLogFunc
+}
+
+- (void)report:(UIMenuController *)menuVC
+{
+    BSLogFunc
+}
 
 - (void)loadNewComments
 {

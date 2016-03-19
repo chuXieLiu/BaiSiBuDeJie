@@ -35,6 +35,7 @@
     bgView.image = [UIImage imageNamed:@"mainCellBackground"];
     self.backgroundView = bgView;
     
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 //    _profileImageView.layer.cornerRadius = _profileImageView.width * 0.5;
 //    _profileImageView.layer.masksToBounds = YES;
 //    _profileImageView.layer.shouldRasterize = YES;
@@ -75,6 +76,16 @@
     }
 }
 
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    return NO;
+}
 
 
 
