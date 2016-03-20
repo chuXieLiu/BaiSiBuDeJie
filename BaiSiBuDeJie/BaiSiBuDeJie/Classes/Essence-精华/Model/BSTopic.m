@@ -40,7 +40,7 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 @implementation BSTopic
 
 
-// 加载数据
+// 加载最新数据
 + (NSURLSessionTask *)loadNewTopicsWithModule:(BSTopicModule)module type:(NSInteger)type Block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -54,6 +54,7 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
     return [self loadTopicWithParams:params block:block];
 }
 
+// 加载更多数据
 + (NSURLSessionTask *)loadMoreOldTopicsWithModule:(BSTopicModule)module type:(NSInteger)type page:(NSInteger)page maxTime:(NSString *)maxTime block:(void (^) (NSArray *topics , NSString *maxTime , NSError *error))block;
 {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -90,17 +91,25 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 - (CGFloat)cellHeight
 {
     if (!_cellHeight) {
-        _cellHeight += kBSTopicCellIconHeight +  2 *kBSTopicCellMargin; // icon头像
+        
+        _cellHeight += kBSTopicCellMargin;
+        _cellHeight += kBSTopicCellIconHeight; // icon头像
+        _cellHeight += kBSTopicCellMargin;
+        
         CGFloat maxW = BS_SCREEN_WIDTH - 2 * kBSTopicCellMargin;
         CGSize size = CGSizeMake(maxW, MAXFLOAT);
         
+        if ([_text rangeOfString:@"你要对正在拉屎的我做什么"].length > 0) {
+            BSLog(@"%@",self.attributeText);
+        }
         
+#warning Simulator iPhone6(8.1) catch
         CGFloat textHeight = [self.attributeText boundingRectWithSize:size
                                                               options:NSStringDrawingUsesLineFragmentOrigin
                                                               context:nil].size.height;
         _cellHeight += textHeight + kBSTopicCellMargin;    // 文字
         
-        if (self.type == BSEssenceTopicTypePicture) {
+        if (self.type == BSEssenceTopicTypePicture) {   // 图片
             CGFloat pictureW = maxW;
             CGFloat pictureH = floorf(pictureW * _height / _width);
             if (pictureH > kBSTopicCellMaxPictureHeight) {
@@ -108,15 +117,16 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
                 pictureH = kBSTopicCellBreakPictureHeight;
             }
             _pictureFrame = CGRectMake(kBSTopicCellMargin, _cellHeight, pictureW, pictureH);
-            _cellHeight += pictureH + kBSTopicCellMargin;   // 图片
-        } else if (self.type == BSEssenceTopicTypeVoice || self.type == BSEssenceTopicTypeVideo) {
+            _cellHeight += pictureH + kBSTopicCellMargin;
+        } else if (self.type == BSEssenceTopicTypeVoice
+                   || self.type == BSEssenceTopicTypeVideo) { // 声音，视频
             CGFloat pictureW = maxW;
             CGFloat pictureH = floorf(pictureW * _height / _width);
             if (pictureH > kBSTopicCellMaxPictureHeight) {
                 pictureH = kBSTopicCellBreakPictureHeight;
             }
             _pictureFrame = CGRectMake(kBSTopicCellMargin, _cellHeight, pictureW, pictureH);
-            _cellHeight += pictureH + kBSTopicCellMargin;   // 图片
+            _cellHeight += pictureH + kBSTopicCellMargin;
         }
         
         BSComment *comment = _topCmt.firstObject;
@@ -135,6 +145,8 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
 }
 
 
+
+
 - (NSAttributedString *)attributeText
 {
     if (!_attributeText) {
@@ -148,8 +160,6 @@ static NSString * const kBSTopicResponseKeyMaxTime = @"maxtime";
     }
     return _attributeText;
 }
-
-
 
 
 

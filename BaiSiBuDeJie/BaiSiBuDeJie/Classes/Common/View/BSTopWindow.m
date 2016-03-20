@@ -19,6 +19,7 @@ static CGFloat const kBSTopWindowHeight = 20.0f;
     _window = [[UIWindow alloc] init];
     _window.frame = CGRectMake(0, 0, BS_SCREEN_WIDTH, kBSTopWindowHeight);
     _window.windowLevel = UIWindowLevelAlert;
+    _window.backgroundColor = [UIColor clearColor];
     UIGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(DidTapTopWindow)];
     [_window addGestureRecognizer:tapGes];
 }

@@ -9,6 +9,7 @@
 #import "BSEssenceViewController.h"
 #import "BSEssenceTopicView.h"
 #import "BSTopicViewController.h"
+#import "BSTopWindow.h"
 #import <Masonry.h>
 
 @interface BSEssenceViewController ()
@@ -35,6 +36,8 @@
     [self setupScrollView];
     
     [self setupTopicView];
+    
+    [BSTopWindow show];
 }
 
 - (BSTopicModule)module

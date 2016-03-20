@@ -98,12 +98,14 @@ static NSString * const kBSTopicTableViewCellIdentifier = @"kBSTopicTableViewCel
 - (void)loadMoreOldTopics
 {
     self.isLoadNewTopics = NO;
+    NSInteger page = self.page + 1;
     @weakify(self)
-    [BSTopic loadMoreOldTopicsWithModule:[self module] type:_type page:self.page + 1 maxTime:self.maxtime block:^(NSArray *topics, NSString *maxTime, NSError *error) {
+    [BSTopic loadMoreOldTopicsWithModule:[self module] type:_type page:page maxTime:self.maxtime block:^(NSArray *topics, NSString *maxTime, NSError *error) {
         @strongify(self)
         if (self.isLoadNewTopics) return ;
         if (!error) {
             self.maxtime = maxTime;
+            self.page = page;
             [self.topics addObjectsFromArray:topics];
             [self.tableView reloadData];
             [self.tableView.mj_footer endRefreshing];
